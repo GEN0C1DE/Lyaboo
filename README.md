@@ -7,10 +7,10 @@ Lyaboo is a Discord Bot that is maintained within the Server of Sector. Updates 
 To get in contact with the Bot Developer, you can reach me here:
 - Discord Server and Account
 : https:discord.gg/K8V8zJ3
-: Enlightenment#1254
+: Pokidat#1254
 
 - Twitter
-: @KempreRblx -- To Change in the Future
+: @Pokidati
 
 ## Lyaboo Support
 This section is coming soon, this section will detail the things such as Paypal or Patron to keep the bot up and running. My services are also Open for commission, so if you need a bot, please get in contact with me using the methods above.
