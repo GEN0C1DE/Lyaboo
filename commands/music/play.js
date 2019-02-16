@@ -140,18 +140,16 @@ class PlayCommand extends Commando.Command {
 				.setThumbnail(message.guild.iconURL)
 				.setDescription(`${Videos.map(Videos2 => `**${++Count} -** ${Videos2.title}`).join('\n')}`)
 				.setTitle(":musical_note: Song Selection :musical_note:");
-				let TEMPMESSAGE = message.channel.send(`Please provide a value to select one of the search results ranging from 1-10.`, Embed)
+				message.channel.send(`Please provide a value to select one of the search results ranging from 1-10.`, Embed)
 				try {
 					var Response = await message.channel.awaitMessages(msg2 => msg2.content > 0 && msg2.content < 11, { maxMatches: 1, time: 10000, errors: ['time'] });
 				} catch (err) {
 					console.error(err);
-					delete TEMPMESSAGE
 					return message.channel.send(':x: No or invalid value entered, cancelling video selection.').then(M => M.delete(5000));
 				}
 				const Index = parseInt(Response.first().content);
 				Info(Videos[Index - 1].videoId, function(Err, Results){
 					if (Err) throw new Error(Err);
-					delete TEMPMESSAGE
 					return HandleVideo(Results, message, VoiceChannel)
 				});
 			})
