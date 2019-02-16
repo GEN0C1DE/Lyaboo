@@ -5,11 +5,16 @@ const Mongoose = Depends.Mongoose
 class RankCommand extends Commando.Command { 
 	constructor(client){
 		super(client, {
-			name: 'rank',
-			aliases: ['profile'],
+			name: 'daily',
 			group: 'economy',
-			memberName: "rank",
-			description: "To check a User's rank globally."
+			memberName: "daily",
+			description: "To gain daily Lyasuno's.",
+			
+			throttling: {
+				usages: 1,
+				duration: 86400
+			}
+
 		});
 	}	
 	
@@ -25,25 +30,39 @@ class RankCommand extends Commando.Command {
 		})
 		
 		let User = message.mentions.members.first() || message.author
+		let Reward = 200;
 		
 		Settings.Schemas.Level.findOne({
 			UserId: User.id
 		}, (Error, Results) => {
 			if (Error) return console.log(Error);
 			if(!Results){
+				let Level = new Settings.Schemas.Level({
+					UserId: Message.author.id,
+					LevelNumber: 0,
+					XPNumber: 0,
+					MoneyNumber: Reward
+				})
+				Level.save().then(Results => console.log(Results)).catch(Error => console.log(Error))
+
 				let Embed = new Discord.RichEmbed()
 				.setColor("6e00ff")
-				.setTitle(`Now Showing Profile of ${User.username || User.user.username}`)
-				.setDescription(`Data doesn't Exist.`)
+				.setTitle(`Daily Reward`)
+				.setDescription(`You have earned a daily reward of ${Reward} Lyasuno's`)
 				.setThumbnail(User.displayAvatarURL || User.user.displayAvatarURL);
-				return message.channel.send(":warning: User not found in Database!", Embed)
+				
+				return message.channel.send(`${User}`, Embed)
 			} else {
+				Results.MoneyNumber = Results.MoneyNumber + Reward
+				Results.save().catch(Error => console.log(Error))
+
 				let Embed = new Discord.RichEmbed()
 				.setColor("6e00ff")
-				.setTitle(`Now Showing Profile of ${User.username || User.user.username}`)
-				.setDescription(`Level: ${Results.LevelNumber}\nExperience: ${Results.XPNumber}\nBalance: ${Results.MoneyNumber}`)
+				.setTitle(`Daily Reward`)
+				.setDescription(`You have earned a daily reward of ${Reward} Lyasuno's`)
 				.setThumbnail(User.displayAvatarURL || User.user.displayAvatarURL);
-				return message.channel.send(Embed)
+				
+				return message.channel.send(`${User}`, Embed)
 			}
 		})
 		
