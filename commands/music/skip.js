@@ -34,7 +34,7 @@ class SkipCommand extends Commando.Command {
 				Queue.Connection.dispatcher.end('Skip command has been used!');
 				return undefined;
 			} else {
-				if Queue.Queue[0].skips.includes(message.member.id) return message.channel.send(":warning: You've already voted to skip this song!")
+				if (Queue.Queue[0].skips.includes(message.member.id)) return message.channel.send(":warning: You've already voted to skip this song!")
 				Queue.Queue[0].skips.push(message.member.id)
 				message.channel.send(":white_check_mark: Vote Submitted!").then(M => M.delete(5000))
 				
