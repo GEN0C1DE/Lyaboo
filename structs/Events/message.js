@@ -1,5 +1,5 @@
 module.exports = (Bot, Message) => { 
-	if (Message.author.equals(Bot.user)) return;
+	if (Message.author.bot) return;
 	if (Message.channel.type === "dm") return;
 	if (Message.content.startsWith(Settings.Prefix)) return;
 	if (Settings.Testing === true) return;
@@ -48,9 +48,9 @@ module.exports = (Bot, Message) => {
 						if(!ARole) return;
 						if(!LvlNum) return;
 						
-						if(Number(LvlNum) <= NewLevel){ 
-						Message.member.addRole(ARole)
-						};
+						if(Number(LvlNum) <= NewLevel){
+							Message.member.addRole(ARole);
+						}	
 					})
 				})
 			}
