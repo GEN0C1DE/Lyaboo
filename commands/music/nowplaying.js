@@ -4,7 +4,8 @@ const Discord = Depends.Discord
 class NPCommand extends Commando.Command {
     constructor(client) {
         super(client, {
-            name: 'np',
+            name: 'nowplaying',
+			aliases: ['np'],
             group: 'music',
             memberName: "np",
             description: 'Will Show the current youtube link playing in a Voice Channel.'

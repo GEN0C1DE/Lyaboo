@@ -1,11 +1,12 @@
 const Commando = Depends.Commando
 const Discord = Depends.Discord
-const Pastee = new Depends.Pastee()
+const Paste = new Depends.Pastee()
 
 class QueueCommand extends Commando.Command {
     constructor(client) {
         super(client, {
             name: 'queue',
+			aliases: ['q'],
             group: 'music',
             memberName: "queue",
             description: 'Will Show the current list of youtube links playing in a Voice Channel.'
@@ -26,7 +27,7 @@ class QueueCommand extends Commando.Command {
 		let ListCount = List.length
 	
 		if (ListCount >= 2048) {
-			Pastee.paste(List, function(Error, Results) {
+			Paste.paste(List, function(Error, Results) {
 				if (Error) return message.channel.send(":x: Couldn't retrieve Queue Link because of characters exceeding 2048 characters.")
 				let Embed = new Discord.RichEmbed()
 				.setColor("#27037e")
