@@ -51,11 +51,11 @@ module.exports = (Bot, Message) => {
 						if(Number(LvlNum) <= NewLevel){
 							Message.member.addRole(ARole);
 						}	
-					})
+					}) 
+					Results.XPNumber = 0
 					
 				})
 			} 
-			Results.XPNumber = 0
 			Results.save().catch(Error => console.log(Error))
 		}
 	})
