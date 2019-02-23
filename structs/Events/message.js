@@ -52,8 +52,10 @@ module.exports = (Bot, Message) => {
 							Message.member.addRole(ARole);
 						}	
 					})
+					
 				})
-			}
+			} 
+			Results.XPNumber = 0
 			Results.save().catch(Error => console.log(Error))
 		}
 	})
