@@ -35,7 +35,8 @@ global.Settings = {
 	Schemas: {
 		Level: require(__dirname + "/structs/Schemas/levelSchema.js"),
 		Suggestion: require(__dirname + "/structs/Schemas/suggestionSchema.js"),
-		Role: require(__dirname + "/structs/Schemas/roleSchema.js")
+		Role: require(__dirname + "/structs/Schemas/roleSchema.js"),
+		User: require(__dirname + "/structs/Schemas/userSchema.js")
 	},
     Bot: "", // Client 
 	Connection: `mongodb://${process.env.MonUSERTOKEN}:${process.env.MonPASSTOKEN}@ds024748.mlab.com:24748/lyaboo_server` // Used for the Database
@@ -56,6 +57,7 @@ Settings.Bot.registry
 	//.registerGroup('moderation', "Moderation Commands")
 	.registerGroup('economy', "Economy Commands")
     .registerGroup('utilities', 'Developer Commands')
+	.registerGroup('misc', 'Other Commands')
 	.registerDefaults()
     .registerCommandsIn(__dirname + "/commands");
 
@@ -73,7 +75,7 @@ Files.forEach((File) => {
 	} catch(Error) {
 		console.error(Error)
 	}	
-})
+}) 
 
 // Opening Connections
 Depends.Mongoose.connect(Settings.Connection, {useNewUrlParser: true }).catch(Error => console.error(Error))
