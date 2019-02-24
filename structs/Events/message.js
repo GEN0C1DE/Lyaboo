@@ -6,6 +6,42 @@ module.exports = (Bot, Message) => {
 	
 	Depends.Mongoose.connect(Settings.Connection + "\Level", {useNewUrlParser: true }).catch(Error => console.error(Error))
 	
+	Settings.Schemas.User.findOne({
+			UserId: Message.author.id
+		}, (Error, Results) => {
+				if (Error) console.log(Error);
+				if(!Results) return;
+				if (Results.IsAFK === true){
+					Results.IsAFK = false
+					Results.Reason = ""
+					Results.save().then(Results => console.log(Results)).catch(Error => console.log(Error))
+					let RichEmbed = new Discord.RichEmbed()
+					.setThumbnail(Message.member.user.displayAvatarURL)
+					.setColor("#27037e")
+					.setDescription(`Welcome Back!, Your AFK was removed.`)
+					.setTimestamp();
+					Message.channel.send(`${Message.author}`, RichEmbed);
+				}
+			})
+			
+	if (Message.content.includes(Message.mentions.members.first())){
+		let MentionedUser = Message.mentions.members.first()
+		Settings.Schemas.User.findOne({
+			UserId: MentionedUser.id
+		}, (Error, Results) => {
+				if (Error) console.log(Error);
+				if(!Results) return;
+				if (Results.IsAFK === true){
+					let RichEmbed = new Discord.RichEmbed()
+					.setThumbnail(Message.member.user.displayAvatarURL)
+					.setColor("#27037e")
+					.setDescription(`The User ${MentionedUser} is currently AFK: ${Results.Reason}`)
+					.setTimestamp();
+					Message.channel.send(`${Message.author}`, RichEmbed);
+				}
+			})
+	}
+	
 	Settings.Schemas.Level.findOne({
 		UserId: Message.author.id
 	}, (Error, Results) => {
@@ -51,11 +87,9 @@ module.exports = (Bot, Message) => {
 						if(Number(LvlNum) <= NewLevel){
 							Message.member.addRole(ARole);
 						}	
-					}) 
-					Results.XPNumber = 0
-					
+					})
 				})
-			} 
+			}
 			Results.save().catch(Error => console.log(Error))
 		}
 	})
@@ -95,8 +129,6 @@ module.exports = (Bot, Message) => {
 
 				Message.channel.send(FirstEmbed).then(Message => Message.delete(5000));
 				
-			} else {
-				console.log("Something went wrong :thonk:")
-			}	
+			} 	
 	})
 }
