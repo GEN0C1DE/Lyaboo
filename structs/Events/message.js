@@ -20,7 +20,7 @@ module.exports = (Bot, Message) => {
 					.setColor("#27037e")
 					.setDescription(`Welcome Back!, Your AFK was removed.`)
 					.setTimestamp();
-					Message.channel.send(`${Message.author}`, RichEmbed);
+					Message.channel.send(`${Message.author}`, RichEmbed).then(M => M.delete(5000));
 				}
 			})
 			
@@ -37,7 +37,7 @@ module.exports = (Bot, Message) => {
 					.setColor("#27037e")
 					.setDescription(`The User ${MentionedUser} is currently AFK: ${Results.Reason}`)
 					.setTimestamp();
-					Message.channel.send(`${Message.author}`, RichEmbed);
+					Message.channel.send(`${Message.author}`, RichEmbed).then(M => M.delete(5000));
 				}
 			})
 	}
