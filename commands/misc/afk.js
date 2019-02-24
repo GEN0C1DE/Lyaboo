@@ -22,7 +22,9 @@ class AFKCommand extends Commando.Command {
 			.catch(Error => {
 				console.log(Error)
 			})
-			
+		
+		message.delete(100)
+
 		let Args = message.content.split(" ")
 		let AReason = Args.slice(1).join(' ');
 		if (!AReason) AReason = "AFK";
@@ -50,7 +52,7 @@ class AFKCommand extends Commando.Command {
 				.setColor("#27037e")
 				.setDescription(`You have set your AFK to: ${AReason}`)
 				.setTimestamp();
-				return message.channel.send(`${message.author}`, RichEmbed);
+				return message.channel.send(`${message.author}`, RichEmbed).then(M =>  M.delete(5000));
 			})
 
 	}	
