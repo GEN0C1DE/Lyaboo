@@ -7,7 +7,7 @@ class AFKCommand extends Commando.Command {
 		super(client, {
 			name: 'afk',
 			aliases: ['away', 'setaway', 'eafk'],
-			group: 'msic',
+			group: 'misc',
 			memberName: "afk",
 			description: 'Will make person go into a AFK status.'
 		});
