@@ -16,7 +16,6 @@ module.exports = (Bot, Message) => {
 					Results.Reason = ""
 					Results.save().then(Results => console.log(Results)).catch(Error => console.log(Error))
 					let RichEmbed = new Depends.Discord.RichEmbed()
-					.setThumbnail(Message.member.user.displayAvatarURL)
 					.setColor("#27037e")
 					.setDescription(`Welcome Back!, Your AFK was removed.`)
 					.setTimestamp();
@@ -33,7 +32,6 @@ module.exports = (Bot, Message) => {
 				if(!Results) return;
 				if (Results.IsAFK === true){
 					let RichEmbed = new Depends.Discord.RichEmbed()
-					.setThumbnail(Message.member.user.displayAvatarURL)
 					.setColor("#27037e")
 					.setDescription(`The User ${MentionedUser} is currently AFK: ${Results.Reason}`)
 					.setTimestamp();
