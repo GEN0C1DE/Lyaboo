@@ -15,7 +15,7 @@ module.exports = (Bot, Message) => {
 					Results.IsAFK = false
 					Results.Reason = ""
 					Results.save().then(Results => console.log(Results)).catch(Error => console.log(Error))
-					let RichEmbed = new Discord.RichEmbed()
+					let RichEmbed = new Depends.Discord.RichEmbed()
 					.setThumbnail(Message.member.user.displayAvatarURL)
 					.setColor("#27037e")
 					.setDescription(`Welcome Back!, Your AFK was removed.`)
@@ -32,7 +32,7 @@ module.exports = (Bot, Message) => {
 				if (Error) console.log(Error);
 				if(!Results) return;
 				if (Results.IsAFK === true){
-					let RichEmbed = new Discord.RichEmbed()
+					let RichEmbed = new Depends.Discord.RichEmbed()
 					.setThumbnail(Message.member.user.displayAvatarURL)
 					.setColor("#27037e")
 					.setDescription(`The User ${MentionedUser} is currently AFK: ${Results.Reason}`)
