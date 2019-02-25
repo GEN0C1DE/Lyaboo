@@ -51,7 +51,6 @@ Settings.Status = `${Settings.Prefix}help | Sector Welcome Assistant. ${Settings
 
 Settings.Bot.registry
     .registerGroup('support', 'Support Commands')
-	.registerGroup('roles', 'Role Commands')
 	.registerGroup('settings', 'Settings Commands')
 	.registerGroup('music', 'Vibes Commands')
 	//.registerGroup('moderation', "Moderation Commands")
