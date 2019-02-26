@@ -66,8 +66,9 @@ module.exports = (Bot, Message) => {
 				.setColor("6e00ff")
 				.setTitle("Congratulations!")
 				.setDescription(`You have leveled up to Level ${NewLevel}`);
-				Message.channel.send(`${Message.author}`, Embed).then(MSG => MSG.delete(10000))
-				
+				Message.channel.send(`${Message.author}`, Embed).then(MSG => MSG.delete(10000)) 
+				Results.XPNumber = 0
+			
 				Settings.Schemas.Role.findOne({
 					ServerID: Message.guild.id
 				}, (Error, Results) => {
