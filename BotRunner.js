@@ -47,7 +47,7 @@ global.Records = { // Used for Storing Temporary Information.
 
 // Getting Bot Registry
 Settings.Bot = new Depends.Commando.Client({ commandPrefix: Settings.Prefix })
-Settings.Status = `${Settings.Prefix}help | Sector Welcome Assistant. ${Settings.Version}`
+Settings.Status = `${Settings.Prefix}help | discord.me/Sektor ${Settings.Version}`
 
 Settings.Bot.registry
     .registerGroup('support', 'Support Commands')
