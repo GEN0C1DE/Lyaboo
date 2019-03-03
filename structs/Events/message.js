@@ -97,7 +97,7 @@ module.exports = (Bot, Message) => {
 		ServerID: Message.guild.id
 	}, (Error, Results) => {
 		if (Error) console.log(Error);
-			if(!Results) return Message.channel.send(":warning: Database Entry not Found for this Server!")
+			if(!Results) return;
 				
 			let SChannel = Results.SuggestionsChannel
 			let RChannel = Results.RecordChannel
