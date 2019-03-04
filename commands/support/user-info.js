@@ -25,7 +25,7 @@ class UserInfoCommand extends Commando.Command {
 			.setColor('0x0000FF')
 			.setTitle(message.author.user.tag)
 			.addField('**Guild-based Info:**', `Nickname: ${member.nickname ? member.nickname : 'No nickname'}\nRoles: ${member.roles.map(roles => `\`${roles.name}\``).join(', ')}\nJoined at: ${member.joinedAt}`)
-			.addField('**User Info:**', `Created at: ${(message.author.createdAt)}\n${(message.author.bot ? 'Account Type: Bot' : 'Account Type: User')}\nStatus: ${(message.author.presence.status)}\nGame: ${(message.author.presence.game ? (message.author.presence.game.name : 'None'))}`)
+			.addField('**User Info:**', `Created at: ${(message.author.createdAt)}\n${(message.author.bot ? 'Account Type: Bot' : 'Account Type: User')}\nStatus: ${(message.author.presence.status)}`)
 			.setFooter(`Powered by Lyaboo`);
 			message.channel.send(RichEmbed);
 			message.channel.stopTyping();
