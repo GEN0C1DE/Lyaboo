@@ -20,12 +20,12 @@ class UserInfoCommand extends Commando.Command {
 			message.channel.startTyping();
 			const member = message.mentions.members.first()
 			const RichEmbed = new Discord.RichEmbed()
-			.setThumbnail(message.author.avatarURL)
-			.setDescription(`Info on **${message.author.tag}** (ID: ${message.author.id})`)
+			.setThumbnail(member.user.avatarURL)
+			.setDescription(`Info on **${member.user.tag}** (ID: ${member.user.id})`)
 			.setColor('0x0000FF')
-			.setTitle(message.author.tag)
+			.setTitle(member.user.tag)
 			.addField('**Guild-based Info:**', `Nickname: ${member.nickname ? member.nickname : 'No nickname'}\nRoles: ${member.roles.map(roles => `\`${roles.name}\``).join(', ')}\nJoined at: ${member.joinedAt}`)
-			.addField('**User Info:**', `Created at: ${(message.author.createdAt)}\n${(message.author.bot ? 'Account Type: Bot' : 'Account Type: User')}\nStatus: ${(message.author.presence.status)}`)
+			.addField('**User Info:**', `Created at: ${(member.user.createdAt)}\n${(member.user.bot ? 'Account Type: Bot' : 'Account Type: User')}\nStatus: ${(member.user.presence.status)}`)
 			.setFooter(`Powered by Lyaboo`);
 			message.channel.send(RichEmbed);
 			message.channel.stopTyping();
