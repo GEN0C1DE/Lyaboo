@@ -12,20 +12,21 @@ class UserInfoCommand extends Commando.Command {
 		});
 	}
 	async run(message, args){
-        if (message.author.bot) return;
+        	if (message.author.bot) return;
 		if (message.channel.type === "dm") return;
 		if (Settings.Testing === true) return;
 		
 		if (!message.author.bot) {
 			message.channel.startTyping();
+			const member = message.mentions.members.first()
 			const RichEmbed = new Discord.RichEmbed()
-			.setThumbnail(user.avatarURL)
-			.setDescription(`Info on **${user.tag}** (ID: ${user.id})`)
+			.setThumbnail(message.author.avatarURL)
+			.setDescription(`Info on **${message.author.tag}** (ID: ${message.author.id})`)
 			.setColor('0x0000FF')
-			.setTitle(user.tag)
+			.setTitle(message.author.user.tag)
 			.addField('**Guild-based Info:**', `Nickname: ${member.nickname ? member.nickname : 'No nickname'}\nRoles: ${member.roles.map(roles => `\`${roles.name}\``).join(', ')}\nJoined at: ${member.joinedAt}`)
-			.addField('**User Info:**', `Created at: ${user.createdAt}\n${user.bot ? 'Account Type: Bot' : 'Account Type: User'}\nStatus: ${user.presence.status}\nGame: ${user.presence.game ? user.presence.game.name : 'None'}`)
-			.setFooter(`Powered by ${this.client.user.username}`);
+			.addField('**User Info:**', `Created at: ${(message.author.createdAt)}\n${(message.author.bot ? 'Account Type: Bot' : 'Account Type: User')}\nStatus: ${(message.author.presence.status)}\nGame: ${(message.author.presence.game ? (message.author.presence.game.name : 'None'))}`)
+			.setFooter(`Powered by Lyaboo`);
 			message.channel.send(RichEmbed);
 			message.channel.stopTyping();
 		} 
