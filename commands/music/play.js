@@ -18,6 +18,7 @@ async function HandleVideo(Video, Message, VoiceChannel, Playlist = false) {
 		url: `https://www.youtube.com/watch?v=${Video.videoId}`,
 		requester: Message.author,
 		skips: [],
+		repeat: false
 	};
 	
 	if (!Queue) {
@@ -67,8 +68,12 @@ async function Play(Guild, Song) {
 		.on('end', Reason => {
 			if (Reason === 'Stream is not generating quickly enough.') console.log('Song ended.');
 			else console.log(Reason);
-			Queue.Queue.shift();
-			Play(Guild, Queue.Queue[0]);
+			if (Queue.Queue[0].repeat === true) {
+				Play(Guild, Queue.Queue[0]);
+			} else {
+				Queue.Queue.shift();
+				Play(Guild, Queue.Queue[0]);
+			}
 		})
 		.on('error', Error => console.error(Error));
 	Dispatcher.setVolumeLogarithmic(Queue.Volume / 5);
