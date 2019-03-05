@@ -28,16 +28,13 @@ class LoopCommand extends Commando.Command {
 			let Song = Queue.Queue[0]
 			if (Song.repeat === false) {
 				Queue.Queue[0].repeat = true
-				let RichEmbed = new Discord.RichEmbed()
-				.setColor("#27037e")
-				.setDescription("Song Loop Activated!")
-				return message.channel.send(RichEmbed);
+				return message.channel.send(":blushin: Song Loop Activated!");
 			} else {
 				Queue.Queue[0].repeat = false
 				let RichEmbed = new Discord.RichEmbed()
 				.setColor("#27037e")
 				.setDescription("Song Loop De-Activated!")
-				return message.channel.send(RichEmbed);
+				return message.channel.send(":blushin: Song Loop De-Activated!");
 			}	
 			return undefined;
 		} else {
