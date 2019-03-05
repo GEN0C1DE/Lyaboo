@@ -46,4 +46,4 @@ class LoopCommand extends Commando.Command {
     }
 }
 
-module.exports = SkipCommand
+module.exports = LoopCommand
