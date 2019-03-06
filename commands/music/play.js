@@ -68,13 +68,15 @@ async function Play(Guild, Song) {
 		.on('end', Reason => {
 			if (Reason === 'Stream is not generating quickly enough.') console.log('Song ended.');
 			else console.log(Reason);
-			if (Reason == "Stop command has been used!") Play(Guild, Queue.Queue[0]) return;
-			if (Queue.Queue[0].repeat === true) {
-				Play(Guild, Queue.Queue[0]);
-			} else {
-				Queue.Queue.shift();
-				Play(Guild, Queue.Queue[0]);
-			}
+			if (Reason == "Stop command has been used!") Play(Guild, Queue.Queue[0]);
+			if (!Reason == "Stop command has been used!"){
+				if (Queue.Queue[0].repeat === true) {
+					Play(Guild, Queue.Queue[0]);
+				} else {
+					Queue.Queue.shift();
+					Play(Guild, Queue.Queue[0]);
+				}
+			}	
 		})
 		.on('error', Error => console.error(Error));
 	Dispatcher.setVolumeLogarithmic(Queue.Volume / 5);
