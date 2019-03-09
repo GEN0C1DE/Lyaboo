@@ -36,7 +36,8 @@ global.Settings = {
 		Level: require(__dirname + "/structs/Schemas/levelSchema.js"),
 		Suggestion: require(__dirname + "/structs/Schemas/suggestionSchema.js"),
 		Role: require(__dirname + "/structs/Schemas/roleSchema.js"),
-		User: require(__dirname + "/structs/Schemas/userSchema.js")
+		User: require(__dirname + "/structs/Schemas/userSchema.js"),
+		Join: require(__dirname + "/structs/Schemas/joinSchema.js")
 	},
     Bot: "", // Client 
 	Connection: `mongodb://${process.env.MonUSERTOKEN}:${process.env.MonPASSTOKEN}@ds024748.mlab.com:24748/lyaboo_server` // Used for the Database
@@ -47,13 +48,14 @@ global.Records = { // Used for Storing Temporary Information.
 
 // Getting Bot Registry
 Settings.Bot = new Depends.Commando.Client({ commandPrefix: Settings.Prefix })
-Settings.Status = `${Settings.Prefix}help | discord.me/Sektor ${Settings.Version}`
+Settings.Status = `${Settings.Prefix}help | Sector Welcome Assistant. ${Settings.Version}`
 
 Settings.Bot.registry
     .registerGroup('support', 'Support Commands')
+	.registerGroup('roles', 'Role Commands')
 	.registerGroup('settings', 'Settings Commands')
 	.registerGroup('music', 'Vibes Commands')
-	//.registerGroup('moderation', "Moderation Commands")
+	.registerGroup('roles', "Join and Leave Commands")
 	.registerGroup('economy', "Economy Commands")
     .registerGroup('utilities', 'Developer Commands')
 	.registerGroup('misc', 'Other Commands')
