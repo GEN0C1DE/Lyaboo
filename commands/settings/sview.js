@@ -26,7 +26,7 @@ class RSetupCommand extends Commando.Command {
 			})
 			
 			
-			Settings.Schemas.Role.findOne({
+			Settings.Schemas.Suggestion.findOne({
 				ServerID: message.guild.id
 			}, (Error, Results) => {
 				if (Error) console.log(Error);
@@ -34,7 +34,7 @@ class RSetupCommand extends Commando.Command {
 				
 				
 				let RichEmbed = new Discord.RichEmbed()
-				.setTitle("Viewing the Roles for Users to Earn.")
+				.setTitle("Viewing the Suggestion Settings for the Server.")
 				.setThumbnail(message.member.user.displayAvatarURL)
 				.setColor("#27037e")
 				.setFooter(`Brought to you by Lyaboo.`)
