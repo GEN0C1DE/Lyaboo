@@ -33,7 +33,7 @@ class UserInfoCommand extends Commando.Command {
 			message.channel.stopTyping();
 		} else {
 			message.channel.startTyping();
-			request.get(`https://discordbots.org/api/bots/${member.user.id}`, (Error, Results, Body) => {
+			Request.get(`https://discordbots.org/api/bots/${member.user.id}`, (Error, Results, Body) => {
 				if (Error) return console.error;
 				let Information = JSON.parse(Body);
 				
