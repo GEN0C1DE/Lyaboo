@@ -29,7 +29,7 @@ class JoinCommand extends Commando.Command {
 			if (Args[1] === "false") {
 				Message = false
 			} else {
-				Message = Args.splice(0, 1).join(" ")
+				Message = Args.splice(1).join(" ")
 			}
 
 			Settings.Schemas.Join.findOne({

@@ -55,7 +55,7 @@ class AddCommand extends Commando.Command {
 				.setThumbnail(message.member.user.displayAvatarURL)
 				.setColor("#27037e")
 				.setFooter(`Brought to you by Lyaboo.`)
-				.addField("ROLES ADDED", `<@RoleId>`)
+				.addField("ROLES ADDED", `${<@RoleId>}`)
 				.setTimestamp();
 			return message.channel.send(":white_check_mark: Setup Successfully.", RichEmbed);
 		} else {
