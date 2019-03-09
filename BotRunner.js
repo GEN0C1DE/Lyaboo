@@ -9,6 +9,7 @@ global.Depends = {
     Timeout: require('foreach-timeout'), // Used for Rainbow Roles.
 	Pastee: require("pastee"), // Used for Maintaining Data exceed overing Character Limits.
 	Mongoose: require("mongoose"), // Used for Storing Data
+	Request: require("request"), // Used for Requesting Site Data
 	
     // Youtube and Music Dependencies
     YTDL: require('ytdl-core'), // To Host Music for Youtube.
