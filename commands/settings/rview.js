@@ -8,7 +8,7 @@ class RSetupCommand extends Commando.Command {
 			name: 'rview',
 			aliases: ['levelview'],
 			group: 'settings',
-			memberName: "rsetup",
+			memberName: "rview",
 			description: 'Views Roles that are in the Database for the Level System.'
 		});
 	}	
