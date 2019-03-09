@@ -2,7 +2,7 @@ const Commando = Depends.Commando
 const Discord = Depends.Discord
 const DevServer = Settings.DevServer
 
-class AnnounceCommand extends Commando.Command {
+class StaffAnnounceCommand extends Commando.Command {
     constructor(client) {
         super(client, {
             name: 'staffannounce',
@@ -46,5 +46,5 @@ class AnnounceCommand extends Commando.Command {
     }
 }
 
-module.exports = AnnounceCommand
+module.exports = StaffAnnounceCommand
 
