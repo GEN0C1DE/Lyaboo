@@ -30,25 +30,25 @@ class RDeleteCommand extends Commando.Command {
 			let RoleId =  RoleArg.id
 			
 			let LevelArg = Args[2]
-			if (!Number(LevelArg)) return message.channel.send(":x: You must provide a numerical value!").then(R => R.delete(1000));
-			
-			let Search = [[LevelArg, RoleId]]
-			
+			if (!Number(LevelArg)) return message.channel.send(":x: You must provide a numerical value!").then(R => R.delete(5000));
+						
 			Settings.Schemas.Role.findOne({
 				ServerID: message.guild.id
 			}, (Error, Results) => {
 				if (Error) console.log(Error)
-				if(!Results) return message.channel.send(":x: No Results found for this Server!").then(R => R.delete(1000));
+				if(!Results) return message.channel.send(":x: No Results found for this Server!").then(R => R.delete(5000));
 				
+				let Count = 0
 				let Successful = false;
-				for(var i = Results.Roles.length - 1; i >= 0; i--){
-					for(var j = 0; j < Search.length; j++){
-						if(Results.Roles[i] === Search[j]){
-							Results.Roles.splice(i, 1);
-							Successful = true;
-						}
+				let Sorting = Results.Roles.map(ROLE => {
+					if (ROLE[0] == LevelArg){
+						if (ROLE[1] == RoleId) {
+							Results.Roles.splice(Count, 1)
+							Successful = true
+						}	
 					}
-				}
+					Count = Count + 1
+				})
 				Results.save().catch(Error => console.log(Error))
 				
 				if (Successful === true) {
