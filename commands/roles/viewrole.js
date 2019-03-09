@@ -24,10 +24,6 @@ class ViewCommand extends Commando.Command {
 			.catch(Error => {
 				console.error(Error)
 			})
-			
-			let RoleArg = message.mentions.roles.first()
-			if (!RoleArg) return message.channel.send(":x: Invalid Role!");
-			let RoleId = RoleArg.id
 
 			Settings.Schemas.Join.findOne({
 				ServerID: message.guild.id
@@ -37,7 +33,7 @@ class ViewCommand extends Commando.Command {
 				
 				let Roles = Results.Roles
 				let Sending = `${Roles.map(ROLESID => `${message.guild.roles.get(ROLESID)}`).join('\n')}`
-				if (Sending.length === 0) Sending = "No Roles Available!";
+				if (Roles.length === 0) Sending = "No Roles Available!";
 				
 				let RichEmbed = new Discord.RichEmbed()
 				.setTitle("Viewing Roles for receiving on Joining!")

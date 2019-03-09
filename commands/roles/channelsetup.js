@@ -38,7 +38,7 @@ class ChannelCommand extends Commando.Command {
 						Roles: [],
 						Channel: Args[1],
 						JMessage: "",
-						LMessage: "",
+						LMessage: ""
 						
 					})
 					NewChannel.save().then(Results => console.log(Results)).catch(Error => console.log(Error))
