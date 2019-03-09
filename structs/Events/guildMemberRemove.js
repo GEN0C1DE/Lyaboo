@@ -7,7 +7,7 @@ module.exports = (Bot, Member) => {
 		if (Error) return console.error(Error);
 		if(!Results) return;
 		
-		let LeaveChannel = Member.guild.channels.find(`${Results.Channel}`)
+		let LeaveChannel = Member.guild.channels.get(`${Results.Channel}`)
 		if (LeaveChannel) {
 			if (Results.LMessage){
 				let LeaveEmbed = new Depends.Discord.RichEmbed()
