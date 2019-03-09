@@ -9,7 +9,7 @@ module.exports = (Bot, Member) => {
 		
 		if (Results.Roles){
 			Results.Roles.forEach((Role) =>{
-				let ARole = Member.guild.roles.get(RoleID)
+				let ARole = Member.guild.roles.get(Role)
 				if(ARole){
 					Member.addRole(ARole);
 				};
