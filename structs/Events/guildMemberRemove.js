@@ -9,7 +9,7 @@ module.exports = (Bot, Member) => {
 		
 		let LeaveChannel = Member.guild.channels.get(`${Results.Channel}`)
 		if (LeaveChannel) {
-			if (Results.LMessage){
+			if (!Results.LMessage === false){
 				let LeaveEmbed = new Depends.Discord.RichEmbed()
 				.setTitle("Member has left!")
 				.setThumbnail(Member.user.displayAvatarURL)

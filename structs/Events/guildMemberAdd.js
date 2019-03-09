@@ -18,7 +18,7 @@ module.exports = (Bot, Member) => {
 		
 		let WelcomeChannel = Member.guild.channels.get(`${Results.Channel}`)
 		if (WelcomeChannel) {
-			if (Results.JMessage){
+			if (!Results.JMessage === false){
 				let WelcomeMention = `${Member.user}`
 				let WelcomeEmbed = new Depends.Discord.RichEmbed()
 				.setTitle("Member has joined!")
