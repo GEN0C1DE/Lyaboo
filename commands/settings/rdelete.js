@@ -32,7 +32,7 @@ class RDeleteCommand extends Commando.Command {
 			let LevelArg = Args[2]
 			if (!Number(LevelArg)) return message.channel.send(":x: You must provide a numerical value!").then(R => R.delete(1000));
 			
-			let Search = [LevelArg, RoleId]
+			let Search = [[LevelArg, RoleId]]
 			
 			Settings.Schemas.Role.findOne({
 				ServerID: message.guild.id
@@ -41,10 +41,12 @@ class RDeleteCommand extends Commando.Command {
 				if(!Results) return message.channel.send(":x: No Results found for this Server!").then(R => R.delete(1000));
 				
 				let Successful = false;
-				for(var i = 0; i <= Results.Roles.length; i++){ 
-					if (Results.Roles[i] === Search) {
-						Results.Roles.splice(i, 1); 
-						Successful = true
+				for(var i = Results.Roles.length - 1; i >= 0; i--){
+					for(var j = 0; j < Search.length; j++){
+						if(Results.Roles[i] === Search[j]){
+							Results.Roles.splice(i, 1);
+							Successful = true;
+						}
 					}
 				}
 				Results.save().catch(Error => console.log(Error))
