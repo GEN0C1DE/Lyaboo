@@ -16,7 +16,7 @@ module.exports = (Bot, Member) => {
 			})
 		}
 		
-		let WelcomeChannel = Member.guild.channels.find(`${Results.Channel}`)
+		let WelcomeChannel = Member.guild.channels.get(`${Results.Channel}`)
 		if (WelcomeChannel) {
 			if (Results.JMessage){
 				let WelcomeMention = `${Member.user}`
