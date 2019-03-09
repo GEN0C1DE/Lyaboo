@@ -6,6 +6,7 @@ class RSetupCommand extends Commando.Command {
 	constructor(client){
 		super(client, {
 			name: 'rsetup',
+			aliases: ['levelsetup', 'rolesetup'],
 			group: 'settings',
 			memberName: "rsetup",
 			description: 'Setup for the Roles per Level will begin.'
@@ -26,7 +27,8 @@ class RSetupCommand extends Commando.Command {
 			
 			let LevelArg = Args[1]
 			
-			let RoleArg = message.mentions.roles.first()
+			if (!message.mentions.roles.first() === Args[2]) return message.channel.send(":x: Invalid Role!")
+			let RoleArg = message.mentions.roles.first() 
 			if (!RoleArg) return message.channel.send(":x: Invalid Role!");
 			let RoleId =  RoleArg.id
 			
