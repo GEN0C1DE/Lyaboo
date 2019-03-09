@@ -37,11 +37,11 @@ class UserInfoCommand extends Commando.Command {
 				if (Error) return console.error;
 				let Information = JSON.parse(Body);
 				
-				const Embed = new RichEmbed()
+				const Embed = new Discord.RichEmbed()
 				.setThumbnail(member.user.avatarURL)
-				.setDescription(`Info on **${member.user.tag}** (ID: \`${user.id}\`)`)
+				.setDescription(`Info on **${member.user.tag}** (ID: \`${member.user.id}\`)`)
 				.setColor('0x0000FF')
-				.setTitle(user.tag)
+				.setTitle(member.user.tag)
 				.addField('**Guild-based Info:**', `Nickname: ${member.nickname ? member.nickname : 'No nickname'}\nRoles: ${member.roles.map(roles => `\`${roles.name}\``).join(', ')}\nJoined at: ${member.joinedAt}`)
 				.addField('**User Info:**', `Created at: ${member.user.createdAt}\n${member.user.bot ? 'Account Type: Bot' : 'Account Type: User'}\nStatus: ${member.user.presence.status}\nGame: ${member.user.presence.game ? member.user.presence.game.name : 'None'}`)
 				.addField('**Bot Info:**', `Servers: ${Information.server_count ? `${Information.server_count}` : 'Could not get server count'} \nUpvotes: ${Information.points ? `${Information.points}` : 'Could not get bot stats'} \nDescription: ${Information.shortdesc ? `${Information.shortdesc}` : 'Could not get bot info'}`)
