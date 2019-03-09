@@ -21,8 +21,8 @@ class AnnounceCommand extends Commando.Command {
         Args.splice(0, 1)
         let Annoucee = Args.join(" ")
 
-        let Author = Number(message.author.id)
-        if (Author == Number(DevServer.Developer)) {
+        let Author = message.author.id
+        if (Author === DevServer.Developer)) {
             let Guild = Settings.Bot.guilds.get(`${DevServer.GuildId}`)
             if (!Guild) return message.channel.send(":x: Couldn't Find DevServer Guild!")
 
