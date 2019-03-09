@@ -25,7 +25,7 @@ class ChannelCommand extends Commando.Command {
 				console.error(Error)
 			})
 			
-			let Channel = message.guild.channels.find(Args[1])
+			let Channel = message.guild.channels.get(Args[1]);
 			if (!Channel) return;
 			
 			Settings.Schemas.Join.findOne({

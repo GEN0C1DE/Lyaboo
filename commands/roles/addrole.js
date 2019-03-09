@@ -25,7 +25,7 @@ class AddCommand extends Commando.Command {
 				console.error(Error)
 			})
 			
-			if (!message.mentions.roles.first() === Args[2]) return message.channel.send(":x: Invalid Role!")
+			if (!message.mentions.roles.first() === Args[1]) return message.channel.send(":x: Invalid Role!")
 			let RoleArg = message.mentions.roles.first() 
 			if (!RoleArg) return message.channel.send(":x: Invalid Role!");
 			let RoleId = RoleArg.id
@@ -40,7 +40,7 @@ class AddCommand extends Commando.Command {
 						Roles: [RoleId],
 						Channel: "",
 						JMessage: "",
-						LMessage: "",
+						LMessage: ""
 						
 					})
 					NewRole.save().then(Results => console.log(Results)).catch(Error => console.log(Error))
