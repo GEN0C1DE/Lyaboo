@@ -1,5 +1,6 @@
 const Commando = Depends.Commando
 const Discord = Depends.Discord
+const Request = Depends.Request
 
 class UserInfoCommand extends Commando.Command {
 	constructor(client) {
