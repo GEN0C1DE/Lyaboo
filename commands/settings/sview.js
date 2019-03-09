@@ -41,7 +41,7 @@ class RSetupCommand extends Commando.Command {
 				.addField("Server ID (Pre-Set)", `${Results.ServerID}`)
 				.addField("Is Enabled?", `${Results.SuggestionsEnabled}`)
 				.addField("Suggestions Channel", `${Results.SuggestionsChannel}`)
-				.addField("Record Channel", `${Results.RecordChannel}`);
+				.addField("Record Channel", `${Results.RecordChannel}`)
 				.setTimestamp();
 				return message.channel.send(RichEmbed);	
 			})
