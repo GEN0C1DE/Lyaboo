@@ -29,7 +29,7 @@ class UserInfoCommand extends Commando.Command {
 			message.channel.send(RichEmbed);
 			message.channel.stopTyping();
 		} 
-    });
+    };
 }
 		
 module.exports = UserInfoCommand
