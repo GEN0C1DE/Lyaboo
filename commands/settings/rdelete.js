@@ -37,11 +37,9 @@ class RDeleteCommand extends Commando.Command {
 				
 				let Successful = false;
 				for(var i = 0; i < Results.Roles.length; i++){ 
-					if (Successful === false) {
-						if (Results.Roles[i][2] === RoleId) {
-							Results.Roles.splice(i, 1); 
-							Successful = true
-						}
+					if (Results.Roles[i][2] === RoleId) {
+						Results.Roles.splice(i, 1); 
+						Successful = true
 					}
 				}
 				Results.save().catch(Error => console.log(Error))
