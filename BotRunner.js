@@ -47,7 +47,7 @@ global.Records = { // Used for Storing Temporary Information.
 }
 
 // Getting Bot Registry
-Settings.Bot = new Depends.Commando.Client({ commandPrefix: Settings.Prefix })
+Settings.Bot = new Depends.Commando.Client({ commandPrefix: Settings.Prefix, unknownCommandResponse: false })
 Settings.Status = `${Settings.Prefix}help | Sector Welcome Assistant. ${Settings.Version}`
 
 Settings.Bot.registry
