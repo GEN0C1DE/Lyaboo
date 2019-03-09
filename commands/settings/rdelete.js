@@ -29,15 +29,20 @@ class RDeleteCommand extends Commando.Command {
 			let RoleArg = message.mentions.roles.first() 
 			let RoleId =  RoleArg.id
 			
+			let LevelArg = Args[2]
+			if (!Number(LevelArg)) return message.channel.send(":x: You must provide a numerical value!").then(R => R.delete(1000));
+			
+			let Search = [LevelArg, RoleId]
+			
 			Settings.Schemas.Role.findOne({
 				ServerID: message.guild.id
 			}, (Error, Results) => {
 				if (Error) console.log(Error)
-				if(!Results) return message.channel.send(":x: No Results found for this Server!").then(R => R.delete(1000))
+				if(!Results) return message.channel.send(":x: No Results found for this Server!").then(R => R.delete(1000));
 				
 				let Successful = false;
 				for(var i = 0; i < Results.Roles.length; i++){ 
-					if (Results.Roles[i][2] === RoleId) {
+					if (Results.Roles[i] === Search) {
 						Results.Roles.splice(i, 1); 
 						Successful = true
 					}
@@ -50,7 +55,7 @@ class RDeleteCommand extends Commando.Command {
 					.setThumbnail(message.member.user.displayAvatarURL)
 					.setColor("#27037e")
 					.setFooter(`Brought to you by Lyaboo.`)
-					.addField("ROLE DELETED", `${Args[1]}`)
+					.addField("ROLE DELETED FROM DATABASE", `${Args[1]}`)
 					.setTimestamp();
 					return message.channel.send(RichEmbed);
 				}
