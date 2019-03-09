@@ -36,7 +36,7 @@ class ViewCommand extends Commando.Command {
 				if(!Results) return message.channel.send(":x: No Data for Roles were Found!")
 				
 				let Roles = Results.Roles
-				let Sending = ${Roles.map(ROLESID => `<@${ROLESID}>`).join('\n')}
+				let Sending = `${Roles.map(ROLESID => <@${ROLESID}>).join('\n')}`
 				if (Sending.length <= 0) Sending = "No Roles Available!";
 				
 				let RichEmbed = new Discord.RichEmbed()
