@@ -18,7 +18,7 @@ class UserInfoCommand extends Commando.Command {
 		
 		const member = message.mentions.members.first()
 
-		if (!message.author.bot) {
+		if (!member.user.bot) {
 			message.channel.startTyping();
 			const RichEmbed = new Discord.RichEmbed()
 			.setThumbnail(member.user.avatarURL)
@@ -45,7 +45,8 @@ class UserInfoCommand extends Commando.Command {
 				.addField('**User Info:**', `Created at: ${member.user.createdAt}\n${member.user.bot ? 'Account Type: Bot' : 'Account Type: User'}\nStatus: ${member.user.presence.status}\nGame: ${member.user.presence.game ? member.user.presence.game.name : 'None'}`)
 				.addField('**Bot Info:**', `Servers: ${Information.server_count ? `${Information.server_count}` : 'Could not get server count'} \nUpvotes: ${Information.points ? `${Information.points}` : 'Could not get bot stats'} \nDescription: ${Information.shortdesc ? `${Information.shortdesc}` : 'Could not get bot info'}`)
 				.setFooter('Powered by Lyaboo and discordbots.org');
-			message.channel.send(Embed);
+				message.channel.send(Embed);
+			});	
 			message.channel.stopTyping();
 		}
     }
