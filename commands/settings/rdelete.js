@@ -41,7 +41,7 @@ class RDeleteCommand extends Commando.Command {
 				if(!Results) return message.channel.send(":x: No Results found for this Server!").then(R => R.delete(1000));
 				
 				let Successful = false;
-				for(var i = 0; i < Results.Roles.length; i++){ 
+				for(var i = 0; i <= Results.Roles.length; i++){ 
 					if (Results.Roles[i] === Search) {
 						Results.Roles.splice(i, 1); 
 						Successful = true
