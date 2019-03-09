@@ -9,7 +9,7 @@ class LoopCommand extends Commando.Command {
 			aliases: ['repeat', 'r'],
             group: 'music',
             memberName: "loop",
-            description: 'Will Repeat a youtube link playing in a Voice Channel.'
+            description: 'Will loop/repeat the song currently playing in the voice channel.'
         });
     }
 

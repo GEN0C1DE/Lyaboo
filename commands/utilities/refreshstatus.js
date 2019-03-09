@@ -8,7 +8,7 @@ class RefreshCommand extends Commando.Command {
             name: 'refresh',
             group: 'utilities',
             memberName: "refresh",
-            description: 'Will refresh the Bots Status.'
+            description: 'DEVELOPER: This will refresh the Bots Status.'
         });
     }
 

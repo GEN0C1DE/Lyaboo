@@ -91,7 +91,7 @@ class PlayCommand extends Commando.Command {
 			aliases: ['lookfor'],
             group: 'music',
             memberName: "search",
-            description: 'Will Play a youtube link in a Voice Channel.'
+            description: 'Will search for a Youtube links to play in the voice channel in results of 10.'
         });
     }
 

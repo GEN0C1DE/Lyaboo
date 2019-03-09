@@ -9,7 +9,7 @@ class QueueCommand extends Commando.Command {
 			aliases: ['q'],
             group: 'music',
             memberName: "queue",
-            description: 'Will Show the current list of youtube links playing in a Voice Channel.'
+            description: 'Will show the user whats playing in the voice channel, and whats coming up.'
         });
     }
 

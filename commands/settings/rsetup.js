@@ -6,10 +6,10 @@ class RSetupCommand extends Commando.Command {
 	constructor(client){
 		super(client, {
 			name: 'rsetup',
-			aliases: ['levelsetup', 'rolesetup'],
+			aliases: ['levelsetup'],
 			group: 'settings',
 			memberName: "rsetup",
-			description: 'Setup for the Roles per Level will begin.'
+			description: 'Adds Roles to the Database for the Level System.'
 		});
 	}	
 	

@@ -6,9 +6,10 @@ class SSetupCommand extends Commando.Command {
 	constructor(client){
 		super(client, {
 			name: 'ssetup',
+			aliases: ['suggestsetup'],
 			group: 'settings',
 			memberName: "ssetup",
-			description: 'Setup for the Suggestions will begin.'
+			description: 'Will change/add Suggestion Information to the database.'
 		});
 	}	
 	

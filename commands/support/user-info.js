@@ -8,29 +8,28 @@ class UserInfoCommand extends Commando.Command {
 			aliases: ['user', 'uinfo', 'whois'],
 			group: 'support',
 			memberName: 'user-info',
-			description: 'Gets information about a user.'
+			description: 'Returns information about a user.'
 		});
 	}
 	async run(message, args){
-        	if (message.author.bot) return;
+        if (message.author.bot) return;
 		if (message.channel.type === "dm") return;
 		if (Settings.Testing === true) return;
 		
 		if (!message.author.bot) {
 			message.channel.startTyping();
-			const member = message.mentions.members.first()
 			const RichEmbed = new Discord.RichEmbed()
-			.setThumbnail(member.user.avatarURL)
-			.setDescription(`Info on **${member.user.tag}** (ID: ${member.user.id})`)
+			.setThumbnail(user.avatarURL)
+			.setDescription(`Info on **${user.tag}** (ID: ${user.id})`)
 			.setColor('0x0000FF')
-			.setTitle(member.user.tag)
+			.setTitle(user.tag)
 			.addField('**Guild-based Info:**', `Nickname: ${member.nickname ? member.nickname : 'No nickname'}\nRoles: ${member.roles.map(roles => `\`${roles.name}\``).join(', ')}\nJoined at: ${member.joinedAt}`)
-			.addField('**User Info:**', `Created at: ${(member.user.createdAt)}\n${(member.user.bot ? 'Account Type: Bot' : 'Account Type: User')}\nStatus: ${(member.user.presence.status)}`)
-			.setFooter(`Powered by Lyaboo`);
+			.addField('**User Info:**', `Created at: ${user.createdAt}\n${user.bot ? 'Account Type: Bot' : 'Account Type: User'}\nStatus: ${user.presence.status}\nGame: ${user.presence.game ? user.presence.game.name : 'None'}`)
+			.setFooter(`Powered by ${this.client.user.username}`);
 			message.channel.send(RichEmbed);
 			message.channel.stopTyping();
 		} 
-    }
+    });
 }
 		
 module.exports = UserInfoCommand

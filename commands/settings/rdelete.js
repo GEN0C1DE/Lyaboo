@@ -2,14 +2,14 @@ const Commando = Depends.Commando
 const Discord = Depends.Discord
 const Mongoose = Depends.Mongoose
 
-class RemoveCommand extends Commando.Command { 
+class RDeleteCommand extends Commando.Command { 
 	constructor(client){
 		super(client, {
-			name: 'removerole',
-			aliases: ['roleremove'],
-			group: 'roles',
-			memberName: "removerole",
-			description: 'Removes a Role for people joining.'
+			name: 'rdelete',
+			aliases: ['leveldelete'],
+			group: 'settings',
+			memberName: "rdelete",
+			description: 'Deletes Roles within the Database for the Level System.'
 		});
 	}	
 	
@@ -20,40 +20,42 @@ class RemoveCommand extends Commando.Command {
 		
 		if (message.member.hasPermission('ADMINISTRATOR')) {
 			let Args = message.content.split(" ")
-			Mongoose.connect(Settings.Connection + "\Join", {useNewUrlParser: true })
+			Mongoose.connect(Settings.Connection + "\Roles", { useNewUrlParser: true })
 			.catch(Error => {
-				console.error(Error)
+				console.log(Error)
 			})
-			
-			if (!message.mentions.roles.first() === Args[1]) return message.channel.send(":x: Invalid Role Provided!").then(M => M.delete(2000));
+						
+			if (!message.mentions.roles.first() === Args[1]) return message.channel.send(":x: Invalid Role!")
 			let RoleArg = message.mentions.roles.first() 
-			let RoleId = RoleArg.id
-
-			Settings.Schemas.Join.findOne({
+			let RoleId =  RoleArg.id
+			
+			Settings.Schemas.Role.findOne({
 				ServerID: message.guild.id
 			}, (Error, Results) => {
-				if (Error) return;
-				if(!Results) return message.channel.send(":x: No Results found for this Server!").then(R => R.delete(1000));
+				if (Error) console.log(Error)
+				if(!Results) return message.channel.send(":x: No Results found for this Server!").then(R => R.delete(1000))
 				
 				let Successful = false;
 				for(var i = 0; i < Results.Roles.length; i++){ 
-				   if ( Results.Roles[i] === RoleId) {
-					 Results.Roles.splice(i, 1); 
-					 Successful = true
-				   }
+					if (Successful === false) {
+						if (Results.Roles[i][2] === RoleId) {
+							Results.Roles.splice(i, 1); 
+							Successful = true
+						}
+					}
 				}
 				Results.save().catch(Error => console.log(Error))
-
+				
 				if (Successful === true) {
 					let RichEmbed = new Discord.RichEmbed()
-					.setTitle("Removed Roles for receiving on Joining!")
+					.setTitle("Role Deletion Complete!")
 					.setThumbnail(message.member.user.displayAvatarURL)
 					.setColor("#27037e")
 					.setFooter(`Brought to you by Lyaboo.`)
-					.addField("ROLE REMOVED", `${RoleArg}`)
+					.addField("ROLE DELETED", `${Args[1]}`)
 					.setTimestamp();
-					return message.channel.send(RichEmbed);	
-				}	
+					return message.channel.send(RichEmbed);
+				}
 			})
 		} else {
 			message.channel.send(":x: Missing Permissions 'ADMINISTRATOR'")
@@ -62,4 +64,4 @@ class RemoveCommand extends Commando.Command {
 	}
 }
 
-module.exports = RemoveCommand
+module.exports = RDeleteCommand

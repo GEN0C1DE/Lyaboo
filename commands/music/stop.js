@@ -8,7 +8,7 @@ class StopCommand extends Commando.Command {
             name: 'stop',
             group: 'music',
             memberName: "stop",
-            description: 'Will Stop a youtube link playing in a Voice Channel.'
+            description: 'Will stop all music playing in the voice channel the Bot is in.'
         });
     }
 

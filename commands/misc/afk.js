@@ -9,7 +9,7 @@ class AFKCommand extends Commando.Command {
 			aliases: ['away', 'setaway', 'eafk'],
 			group: 'misc',
 			memberName: "afk",
-			description: 'Will make person go into a AFK status.'
+			description: 'Will set the persons AFK status to (REASON or AFK)'
 		});
 	}	
 	

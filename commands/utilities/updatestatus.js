@@ -8,7 +8,7 @@ class UpdateCommand extends Commando.Command {
             name: 'update',
             group: 'utilities',
             memberName: "update",
-            description: 'Will update the status of the Bot.'
+            description: 'DEVELOPER: This will update the status of the Bot.'
         });
     }
 

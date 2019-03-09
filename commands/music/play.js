@@ -91,7 +91,7 @@ class PlayCommand extends Commando.Command {
 			aliases: ['p', "vibe"],
             group: 'music',
             memberName: "play",
-            description: 'Will Play a youtube link in a Voice Channel.'
+            description: 'Will play a Search Term, Playlist, or Link that is of youtube origin in the voice channel.'
         });
     }
 

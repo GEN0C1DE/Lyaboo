@@ -9,7 +9,7 @@ class RebootCommand extends Commando.Command {
             name: 'reboot',
             group: 'utilities',
             memberName: "reboot",
-            description: 'Will restart the Bot.'
+            description: 'DEVELOPER: This will restart the Bot.'
         });
     }
 
@@ -22,8 +22,10 @@ class RebootCommand extends Commando.Command {
         if (Author == Number(DevServer.Developer)) {
             message.channel.send(":warning: Resetting Bot...")
 			.then(Mes => Mes.delete(2000))
-			.then(() => Settings.Bot.destroy())
-            .then(() => Bot.login(DevKeys.Login))
+			.then(() => Settings.Bot.destroy());
+			
+			Settings.Bot = new Depends.Commando.Client({ commandPrefix: Settings.Prefix, unknownCommandResponse: false })
+            Settings.Bot.login(DevKeys.Login)
         } else {
             let Embed = new Discord.RichEmbed()
                 .setColor("276e00ff")

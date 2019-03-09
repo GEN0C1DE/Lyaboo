@@ -9,7 +9,7 @@ class SkipCommand extends Commando.Command {
 			aliases: ['s'],
             group: 'music',
             memberName: "skip",
-            description: 'Will Skip a youtube link playing in a Voice Channel.'
+            description: 'Will skip and play the next song in queue.'
         });
     }
 

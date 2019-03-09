@@ -7,7 +7,7 @@ class ServerCommand extends Commando.Command {
 			name: 'server',
 			group: 'support',
 			memberName: "server",
-			description: 'Will return information about the Server.'
+			description: 'Returns information about the Server.'
 		});
 	}	
 	

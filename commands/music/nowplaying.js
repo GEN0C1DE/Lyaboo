@@ -8,7 +8,7 @@ class NPCommand extends Commando.Command {
 			aliases: ['np'],
             group: 'music',
             memberName: "np",
-            description: 'Will Show the current youtube link playing in a Voice Channel.'
+            description: 'Will show the current song playing in the voice channel.'
         });
     }
 

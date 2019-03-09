@@ -5,10 +5,10 @@ const DevServer = Settings.DevServer
 class AnnounceCommand extends Commando.Command {
     constructor(client) {
         super(client, {
-            name: 'announce',
+            name: 'staffannounce',
             group: 'utilities',
-            memberName: "announce",
-            description: 'DEVELOPER: Will announce a message to the Home Discord Servers Announcements Channel.'
+            memberName: "staffannounce",
+            description: 'DEVELOPER: Will announce a message to the Home Discord Servers Staff Announcements Channel.'
         });
     }
 
@@ -26,15 +26,15 @@ class AnnounceCommand extends Commando.Command {
             let Guild = Settings.Bot.guilds.get(`${DevServer.GuildId}`)
             if (!Guild) return message.channel.send(":x: Couldn't Find DevServer Guild!")
 
-            let Channel = Settings.Bot.channels.get(`${DevServer.AnnouncementChannel}`)
-            if (!Channel) return message.channel.send(":x: Couldn't Find DevServer Announcements!")
+            let Channel = Settings.Bot.channels.get(`${DevServer.StaffAnnouncementChannel}`)
+            if (!Channel) return message.channel.send(":x: Couldn't Find DevServer Staff Announcements!")
 
         
             let Embed = new Discord.RichEmbed()
                 .setColor("6e00ff")
                 .setDescription(Annoucee);
 
-            return Channel.send(`@everyone New Announcement from Developer <@${DevServer.Developer}>`, Embed)
+            return Channel.send(`@everyone New Staff Announcement from Developer <@${DevServer.Developer}>`, Embed)
         } else {
             let Embed = new Discord.RichEmbed()
                 .setColor("6e00ff")

@@ -25,9 +25,8 @@ class AddCommand extends Commando.Command {
 				console.error(Error)
 			})
 			
-			if (!message.mentions.roles.first() === Args[1]) return message.channel.send(":x: Invalid Role!")
+			if (!message.mentions.roles.first() === Args[1]) return message.channel.send(":x: Invalid Role Provided!").then(M => M.delete(2000));
 			let RoleArg = message.mentions.roles.first() 
-			if (!RoleArg) return message.channel.send(":x: Invalid Role!");
 			let RoleId = RoleArg.id
 
 			Settings.Schemas.Join.findOne({

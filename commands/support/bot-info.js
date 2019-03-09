@@ -31,6 +31,8 @@ class BotCommand extends Commando.Command {
 		.setAuthor("Lyaboo Dedications", "https://cdn.discordapp.com/avatars/513448452987027478/f63754a4f5e489cf7c03a0d797ca70b3.png?size=256")
 		.setTimestamp()
 		.addField("Clickbait", "Owned by Forgetful#6666")
+		.addField("Cialis", "Owned by Voyna#6245")
+		.addField("Nitro Networks", "Owned by Unhalted#3291")
 		.setFooter("Want to see your Discord Added? DM Pokidat#1254", "https://cdn.discordapp.com/avatars/417835827700301836/808cb0b5521609d1f65d9938a6c790cb.png?size=256");    
 	   
 		message.author.send(FirstEmbed); 

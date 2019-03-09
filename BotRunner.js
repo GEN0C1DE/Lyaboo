@@ -27,6 +27,7 @@ global.Settings = {
     DevServer: {
         GuildId: "521782616563646465", // Guild Number for Home Bot Discord.
         AnnouncementChannel: "521841249963999232", // Announcements Channel for Discord.
+		StaffAnnouncementChannel: "524265252695703562", // Staff Announcements Channel for Discord.
         Developer: "417835827700301836" // Bot Developer for Lyaboo.
     },
     DevKeys: {

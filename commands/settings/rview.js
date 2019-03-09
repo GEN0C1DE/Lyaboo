@@ -2,14 +2,14 @@ const Commando = Depends.Commando
 const Discord = Depends.Discord
 const Mongoose = Depends.Mongoose
 
-class ViewCommand extends Commando.Command { 
+class RSetupCommand extends Commando.Command { 
 	constructor(client){
 		super(client, {
-			name: 'viewrole',
-			aliases: ['roleview'],
-			group: 'roles',
-			memberName: "viewrole",
-			description: 'Setting the Role for people joining.'
+			name: 'rview',
+			aliases: ['levelview'],
+			group: 'settings',
+			memberName: "rsetup",
+			description: 'Views Roles that are in the Database for the Level System.'
 		});
 	}	
 	
@@ -20,29 +20,31 @@ class ViewCommand extends Commando.Command {
 		
 		if (message.member.hasPermission('ADMINISTRATOR')) {
 			let Args = message.content.split(" ")
-			Mongoose.connect(Settings.Connection + "\Join", {useNewUrlParser: true })
+			Mongoose.connect(Settings.Connection + "\Roles", { useNewUrlParser: true })
 			.catch(Error => {
-				console.error(Error)
+				console.log(Error)
 			})
-
-			Settings.Schemas.Join.findOne({
+			
+			
+			Settings.Schemas.Role.findOne({
 				ServerID: message.guild.id
 			}, (Error, Results) => {
-				if (Error) return;
-				if(!Results) return message.channel.send(":x: No Results found for this Server!").then(R => R.delete(1000));
+				if (Error) console.log(Error);
+				if(!Results) return message.channel.send(":x: No Results found for this Server!").then(R => R.delete(1000))
 				
 				let Roles = Results.Roles
-				let Sending = `${Roles.map(ROLESID => `${message.guild.roles.get(ROLESID)}`).join('\n')}`
+				let Sending = `${Roles.map(ROLESID => `Level: ${ROLESID[0]}, Role: ${message.guild.roles.get(ROLESID[1])};`).join('\n')}`
 				if (Roles.length === 0) Sending = "No Roles Available!";
 				
 				let RichEmbed = new Discord.RichEmbed()
-				.setTitle("Viewing Roles for receiving on Joining!")
+				.setTitle("Viewing the Roles for Users to Earn.")
 				.setThumbnail(message.member.user.displayAvatarURL)
 				.setColor("#27037e")
 				.setFooter(`Brought to you by Lyaboo.`)
-				.addField("ROLES ADDED", `${Sending}`)
+				.setDescription(`${Sending}`)
 				.setTimestamp();
-				return message.channel.send(RichEmbed);	
+				return message.channel.send(RichEmbed);
+				
 			})
 		} else {
 			message.channel.send(":x: Missing Permissions 'ADMINISTRATOR'")
@@ -51,4 +53,4 @@ class ViewCommand extends Commando.Command {
 	}
 }
 
-module.exports = ViewCommand
+module.exports = RSetupCommand
