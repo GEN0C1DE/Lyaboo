@@ -13,7 +13,7 @@ class AnnounceCommand extends Commando.Command {
     }
 
     async run(message, args) {
-        if (message.author.bot) return; return;
+        if (message.author.bot) return;
         if (message.channel.type === "dm") return;
         if (Settings.Testing === true) return;
 
@@ -21,22 +21,18 @@ class AnnounceCommand extends Commando.Command {
         Args.splice(0, 1)
         let Annoucee = Args.join(" ")
 		
-		console.log("0")
         let Author = message.author.id
         if (Author === DevServer.Developer) {
-			console.log("1")
             let Guild = Settings.Bot.guilds.get(`${DevServer.GuildId}`)
             if (!Guild) return message.channel.send(":x: Couldn't Find DevServer Guild!")
 
             let Channel = Settings.Bot.channels.get(`${DevServer.AnnouncementChannel}`)
             if (!Channel) return message.channel.send(":x: Couldn't Find DevServer Announcements!")
 
-			console.log("2")
             let Embed = new Discord.RichEmbed()
                 .setColor("6e00ff")
                 .setDescription(Annoucee);
 			
-			console.log("3")
             return Channel.send(`@everyone New Announcement from Developer <@${DevServer.Developer}>`, Embed)
         } else {
             let Embed = new Discord.RichEmbed()

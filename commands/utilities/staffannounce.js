@@ -13,7 +13,7 @@ class StaffAnnounceCommand extends Commando.Command {
     }
 
     async run(message, args) {
-        if (message.author.bot) return; return;
+        if (message.author.bot) return;
         if (message.channel.type === "dm") return;
         if (Settings.Testing === true) return;
 
