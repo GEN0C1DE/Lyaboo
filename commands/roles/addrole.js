@@ -25,7 +25,8 @@ class AddCommand extends Commando.Command {
 				console.error(Error)
 			})
 			
-			let RoleArg = message.mentions.roles.first()
+			if (!message.mentions.roles.first() === Args[2]) return message.channel.send(":x: Invalid Role!")
+			let RoleArg = message.mentions.roles.first() 
 			if (!RoleArg) return message.channel.send(":x: Invalid Role!");
 			let RoleId = RoleArg.id
 
@@ -55,7 +56,7 @@ class AddCommand extends Commando.Command {
 				.setThumbnail(message.member.user.displayAvatarURL)
 				.setColor("#27037e")
 				.setFooter(`Brought to you by Lyaboo.`)
-				.addField("ROLES ADDED", `<@${RoleId}>`)
+				.addField("ROLES ADDED", `${RoleArg}`)
 				.setTimestamp();
 			return message.channel.send(":white_check_mark: Setup Successfully.", RichEmbed);
 		} else {
