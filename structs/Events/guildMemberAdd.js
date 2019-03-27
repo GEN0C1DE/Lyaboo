@@ -25,7 +25,7 @@ module.exports = (Bot, Member) => {
 				.setThumbnail(Member.user.displayAvatarURL)
 				.setDescription(`${Results.JMessage}`)
 				.setColor("#27037e")
-				.setFooter(`You are the ${Member.guild.memberCount} member to joined.`)
+				.setFooter(`Member Count is now ${Member.guild.memberCount} members.`)
 				.setTimestamp();
 				WelcomeChannel.send(WelcomeMention, WelcomeEmbed)
 			}
