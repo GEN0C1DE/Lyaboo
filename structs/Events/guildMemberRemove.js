@@ -13,7 +13,7 @@ module.exports = (Bot, Member) => {
 				let LeaveEmbed = new Depends.Discord.RichEmbed()
 				.setTitle("Member has left!")
 				.setThumbnail(Member.user.displayAvatarURL)
-				.setDescription(`${Results.LMessage}`)
+				.setDescription(`{Member.user.username}#${Member.user.discriminator}, ${Results.LMessage}`)
 				.setColor("#27037e")
 				.setFooter(`The member count stands at ${Member.guild.memberCount}.`)
 				.setTimestamp();
