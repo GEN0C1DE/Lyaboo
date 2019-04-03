@@ -26,17 +26,8 @@ class BotCommand extends Commando.Command {
 		.addField("Bot Prefix", `'${Settings.Prefix}'`)
 	    .addField("Bot Commands", `To view Bot Commands, Please Say '${Settings.Prefix}help'`)
 	    .addField("Bot Version", `${Settings.Version}`);
-		
-		let SecondEmbed = new Discord.RichEmbed()
-		.setAuthor("Lyaboo Dedications", "https://cdn.discordapp.com/avatars/513448452987027478/f63754a4f5e489cf7c03a0d797ca70b3.png?size=256")
-		.setTimestamp()
-		.addField("Clickbait", "Owned by Forgetful#6666")
-		.addField("Cialis", "Owned by Voyna#6245")
-		.addField("Nitro Networks", "Owned by Unhalted#3291")
-		.setFooter("Want to see your Discord Added? DM Pokidat#1254", "https://cdn.discordapp.com/avatars/417835827700301836/808cb0b5521609d1f65d9938a6c790cb.png?size=256");    
-	   
+
 		message.author.send(FirstEmbed); 
-		message.author.send(SecondEmbed);
 		message.channel.send(":white_check_mark: Please Check Direct Messages for More Information. If you didn't receive any messages, it's because your DM's are disabled.")
 		return;
 	}
