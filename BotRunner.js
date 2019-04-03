@@ -21,7 +21,7 @@ global.Depends = {
 // Getting Bot Settings Information
 global.Settings = { 
     Name: "Lyaboo", // Name of Bot.
-    Version: "0.1.621", // Version of the Bot.
+    Version: "0.1.721", // Version of the Bot.
     Testing: false, // Testing State of the Bot.
     Prefix: "=", // Prefix of the Bot.
     Status: "", // Status of the Bot.
@@ -50,12 +50,12 @@ global.Records = { // Used for Storing Temporary Information.
 
 // Getting Bot Registry
 Settings.Bot = new Depends.Commando.Client({ commandPrefix: Settings.Prefix, unknownCommandResponse: false })
-Settings.Status = `${Settings.Prefix}info | discord.me/Sektor ${Settings.Version}`
+Settings.Status = `${Settings.Prefix}info | discord.me/Zulinghu ${Settings.Version}`
 
 Settings.Bot.registry
     .registerGroup('support', 'Support Commands')
 	.registerGroup('roles', 'Role Commands')
-	.registerGroup('settings', 'Settings Commands')
+	.registerGroup('settings', 'Level Commands')
 	.registerGroup('music', 'Vibes Commands')
 	.registerGroup('roles', "Join and Leave Commands")
 	.registerGroup('economy', "Economy Commands")
