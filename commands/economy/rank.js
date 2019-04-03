@@ -39,9 +39,11 @@ class RankCommand extends Commando.Command {
 				return message.channel.send(":warning: User not found in Database!", Embed)
 			} else {
 				let Embed = new Discord.RichEmbed()
+				let NextLevel = Results.LevelNumber * 300;
+				
 				.setColor("6e00ff")
 				.setTitle(`Now Showing Profile of ${User.username || User.user.username}`)
-				.setDescription(`Level: ${Results.LevelNumber}\nExperience: ${Results.XPNumber}\nBalance: ${Results.MoneyNumber}`)
+				.setDescription(`Level: ${Results.LevelNumber}\nExperience: ${Results.XPNumber}/${NextLevel}\nBalance: ${Results.MoneyNumber}`)
 				.setThumbnail(User.displayAvatarURL || User.user.displayAvatarURL);
 				return message.channel.send(Embed)
 			}
