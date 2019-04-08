@@ -39,7 +39,7 @@ global.Settings = {
 		Suggestion: require(__dirname + "/structs/Schemas/suggestionSchema.js"),
 		Role: require(__dirname + "/structs/Schemas/roleSchema.js"),
 		User: require(__dirname + "/structs/Schemas/userSchema.js"),
-		Join: require(__dirname + "/structs/Schemas/joinSchema.js")
+		Join: require(__dirname + "/structs/Schemas/joinSchema.js"),
 	},
     Bot: "", // Client 
 	Connection: `mongodb://${process.env.MonUSERTOKEN}:${process.env.MonPASSTOKEN}@ds024748.mlab.com:24748/lyaboo_server` // Used for the Database
@@ -57,7 +57,6 @@ Settings.Bot.registry
 	.registerGroup('roles', 'Role Commands')
 	.registerGroup('settings', 'Level Commands')
 	.registerGroup('music', 'Vibes Commands')
-	.registerGroup('roles', "Join and Leave Commands")
 	.registerGroup('economy', "Economy Commands")
     .registerGroup('utilities', 'Developer Commands')
 	.registerGroup('misc', 'Other Commands')
