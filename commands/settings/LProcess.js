@@ -80,8 +80,8 @@ class RSetupCommand extends Commando.Command {
 					.setThumbnail(message.member.user.displayAvatarURL)
 					.setColor("#27037e")
 					.setFooter(`Brought to you by Lyaboo.`)
-					.addField("LEVEL TO ACHIEVE", `${Args[1]}`)
-					.addField("ROLE WHEN ACHIEVED", `${Args[2]}`)
+					.addField("LEVEL TO ACHIEVE", `${Args[2]}`)
+					.addField("ROLE WHEN ACHIEVED", `${Args[3]}`)
 					.setTimestamp();
 				return message.channel.send(":white_check_mark: Setup Successfully.", RichEmbed);
 			}
@@ -118,7 +118,7 @@ class RSetupCommand extends Commando.Command {
 						.setThumbnail(message.member.user.displayAvatarURL)
 						.setColor("#27037e")
 						.setFooter(`Brought to you by Lyaboo.`)
-						.addField("ROLE DELETED FROM DATABASE", `${Args[1]}`)
+						.addField("ROLE DELETED FROM DATABASE", `${Args[3]}`)
 						.setTimestamp();
 						return message.channel.send(RichEmbed);
 					}
