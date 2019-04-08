@@ -223,7 +223,6 @@ class AddCommand extends Commando.Command {
 					.setTimestamp();
 				return message.channel.send(":white_check_mark: Setup Successfully.", RichEmbed);
 			}
-			return message.channel.send(`:warning: Couldn't Find ${Args[1]} as a Setting!`)
 		} else {
 			message.channel.send(":x: Missing Permissions 'ADMINISTRATOR'")
 			return;
