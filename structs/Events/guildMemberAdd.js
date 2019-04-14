@@ -25,10 +25,30 @@ module.exports = (Bot, Member) => {
 				.setThumbnail(Member.user.displayAvatarURL)
 				.setDescription(`${Results.JMessage}`)
 				.setColor("#27037e")
-				.setFooter(`Member Count is now ${Member.guild.memberCount} members.`)
+				.setFooter(`You are the ${Member.guild.memberCount} member to joined.`)
 				.setTimestamp();
 				WelcomeChannel.send(WelcomeMention, WelcomeEmbed)
 			}
-		}	
+		}
+
+		Settings.Schemas.Role.findOne({
+			ServerID: Message.guild.id
+		}, (Error, Results) => {
+			if(Error) console.error(Error);
+			if (!Results) return;
+			let Roles = Results.Roles
+			Roles.forEach((array) => {
+				let LvlNum = array[0]
+				let RoleID = array[1]
+				let ARole = Message.guild.roles.get(RoleID)
+						
+				if(!ARole) return;
+				if(!LvlNum) return;
+						
+				if(Number(LvlNum) <= NewLevel){
+					Message.member.addRole(ARole);
+				}	
+			})
+		})
 	})
 }
