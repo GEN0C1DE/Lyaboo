@@ -48,7 +48,7 @@ class HugCommand extends Commando.Command {
 		
 		if (!Args[1]) {
 			const RichEmbed = new Discord.RichEmbed()
-			.setColor(0xFF0000)
+			.setColor("#27037e")
 			.setTitle(`${message.author.username} hugged themself...! (weirdo)`)
 			.setImage('https://media3.giphy.com/media/ArLxZ4PebH2Ug/giphy.gif');
 			message.channel.send(RichEmbed);
@@ -56,7 +56,7 @@ class HugCommand extends Commando.Command {
 		}
 		if (!message.mentions.members.first().user.username === message.isMentioned(message.author)) {
 			const RichEmbed = new Discord.RichEmbed()
-            .setColor(0xFF0000)
+            .setColor("#27037e")
             .setTitle(`${message.author.username} gave ${message.mentions.members.first().user.username} a hug! How sweet!`)
             .setImage(Hugs[Results]);
 			message.channel.send(RichEmbed);
@@ -64,7 +64,7 @@ class HugCommand extends Commando.Command {
 		}
 		
 		const RichEmbed = new Discord.RichEmbed()
-		.setColor(0xFF0000)
+		.setColor("#27037e")
 		.setTitle(`${message.author.username} hugged themself...! (weirdo)`)
 		.setImage('https://media3.giphy.com/media/ArLxZ4PebH2Ug/giphy.gif');
 		message.channel.send(RichEmbed);
