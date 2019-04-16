@@ -42,7 +42,7 @@ class AddCommand extends Commando.Command {
 				}, (Error, Results) => {
 					if (Error) console.log(Error);
 					if(!Results){
-						let Suggestion = new Settings.Schemas.Suggestion({
+						let Suggestion = new Settings.Schemas.Mods({
 							ServerID: message.guild.id,
 							Logging: Bool,
 							LogsChannel: Args[3]
@@ -67,7 +67,7 @@ class AddCommand extends Commando.Command {
 				return message.channel.send(":white_check_mark: Setup Successfully.", RichEmbed);	
 			}
 			if (Args[1] == "view"){
-				Settings.Schemas.Suggestion.findOne({
+				Settings.Schemas.Mods.findOne({
 					ServerID: message.guild.id
 				}, (Error, Results) => {
 					if (Error) console.log(Error);
