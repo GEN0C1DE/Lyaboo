@@ -1,7 +1,7 @@
 const Mongoose = Depends.Mongoose
 
 let ModSchema = new Mongoose.Schema({
-	ServerId: String,
+	ServerID: String,
 	Logging: Boolean,
 	LogsChannel: String
 });
