@@ -29,7 +29,7 @@ class BanCommand extends Commando.Command {
 			ServerID: message.guild.id
 		}, (Error, Results) => { 
 			if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send(":warning: You do not have permissions to do that.");
-			if(BannedUser.hasPermission("MANAGE_MESSAGES")) return message.channel.send(":warning: This person can't be banned.");
+			if(BannedUser.hasPermission("MANAGE_MESSAGES")) return message.channel.send(":warning: This person can't be kicked.");
 			message.guild.member(BannedUser).ban(Reason);
 			
 			if(Results){
@@ -38,7 +38,7 @@ class BanCommand extends Commando.Command {
 						let LoggingChannel = message.guild.channels.get(Results.LogsChannel);
 						let RichEmbed = new Discord.RichEmbed()
 						.setDescription("Member Banned!")
-						.setColor("#000000")
+						.setColor("#27037e")
 						.addField("Banned User", `${BannedUser} with ID ${BannedUser.id}`)
 						.addField("Banned By", `<@${message.author.id}> with ID ${message.author.id}`)
 						.addField("Banned In", message.channel)

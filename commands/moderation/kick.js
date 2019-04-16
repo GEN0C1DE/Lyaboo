@@ -38,7 +38,7 @@ class KickCommand extends Commando.Command {
 						let LoggingChannel = message.guild.channels.get(Results.LogsChannel);
 						let RichEmbed = new Discord.RichEmbed()
 						.setDescription("Member Kicked!")
-						.setColor("#000000")
+						.setColor("#27037e")
 						.addField("Kicked User", `${KickedUser} with ID ${KickedUser.id}`)
 						.addField("Kicked By", `<@${message.author.id}> with ID ${message.author.id}`)
 						.addField("Kicked In", message.channel)
