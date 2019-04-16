@@ -29,7 +29,7 @@ class BanCommand extends Commando.Command {
 			ServerID: message.guild.id
 		}, (Error, Results) => { 
 			if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send(":warning: You do not have permissions to do that.");
-			if(BannedUser.hasPermission("MANAGE_MESSAGES")) return message.channel.send(":warning: This person can't be kicked.");
+			if(BannedUser.hasPermission("MANAGE_MESSAGES")) return message.channel.send(":warning: This person can't be banned.");
 			message.guild.member(BannedUser).ban(Reason);
 			
 			if(Results){
