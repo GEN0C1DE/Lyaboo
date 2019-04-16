@@ -30,25 +30,25 @@ module.exports = (Bot, Member) => {
 				WelcomeChannel.send(WelcomeMention, WelcomeEmbed)
 			}
 		}
+	})
 
-		Settings.Schemas.Role.findOne({
-			ServerID:Member.guild.id
-		}, (Error, Results) => {
-			if(Error) console.error(Error);
-			if (!Results) return;
-			let Roles = Results.Roles
-			Roles.forEach((array) => {
-				let LvlNum = array[0]
-				let RoleID = array[1]
-				let ARole = Member.guild.roles.get(RoleID)
+	Settings.Schemas.Role.findOne({
+	ServerID:Member.guild.id
+	}, (Error, Results) => {
+		if(Error) console.error(Error);
+		if (!Results) return;
+		let Roles = Results.Roles
+		Roles.forEach((array) => {
+			let LvlNum = array[0]
+			let RoleID = array[1]
+			let ARole = Member.guild.roles.get(RoleID)
 						
-				if(!ARole) return;
-				if(!LvlNum) return;
+			if(!ARole) return;
+			if(!LvlNum) return;/*
 						
-				if(Number(LvlNum) <= NewLevel){
-					Member.addRole(ARole);
-				}	
-			})
+			if(Number(LvlNum) <= NewLevel){
+				Member.addRole(ARole);
+			}*/	
 		})
 	})
 }
