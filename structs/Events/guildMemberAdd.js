@@ -32,7 +32,7 @@ module.exports = (Bot, Member) => {
 		}
 
 		Settings.Schemas.Role.findOne({
-			ServerID: Message.guild.id
+			ServerID:Member.guild.id
 		}, (Error, Results) => {
 			if(Error) console.error(Error);
 			if (!Results) return;
@@ -40,13 +40,13 @@ module.exports = (Bot, Member) => {
 			Roles.forEach((array) => {
 				let LvlNum = array[0]
 				let RoleID = array[1]
-				let ARole = Message.guild.roles.get(RoleID)
+				let ARole = Member.guild.roles.get(RoleID)
 						
 				if(!ARole) return;
 				if(!LvlNum) return;
 						
 				if(Number(LvlNum) <= NewLevel){
-					Message.member.addRole(ARole);
+					Member.addRole(ARole);
 				}	
 			})
 		})
