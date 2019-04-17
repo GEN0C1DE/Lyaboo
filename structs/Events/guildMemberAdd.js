@@ -32,7 +32,7 @@ module.exports = (Bot, Member) => {
 		}
 	})
 
-	Settings.Schemas.Role.findOne({
+	/*Settings.Schemas.Role.findOne({
 	ServerID:Member.guild.id
 	}, (Error, Results) => {
 		if(Error) console.error(Error);
@@ -44,11 +44,11 @@ module.exports = (Bot, Member) => {
 			let ARole = Member.guild.roles.get(RoleID)
 						
 			if(!ARole) return;
-			if(!LvlNum) return;/*
+			if(!LvlNum) return;
 						
 			if(Number(LvlNum) <= NewLevel){
 				Member.addRole(ARole);
-			}*/	
+			}	
 		})
-	})
+	})*/
 }
