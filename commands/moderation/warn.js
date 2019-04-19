@@ -22,7 +22,7 @@ class KickCommand extends Commando.Command {
 		let WarnedUser = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0])
 		if (!WarnedUser) return message.reply(":warning: Couldn't find user.");
 		
-		let Reason = Message = Args.splice(2).join(" ");
+		let Reason = Args.splice(2).join(" ");
 		if (!Reason) Reason = "No Reason Provided!"
 		
 		if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send(":warning: You do not have permissions to do that.");
@@ -39,12 +39,12 @@ class KickCommand extends Commando.Command {
 				let NewWarn = new Settings.Schemas.Warns({
 					ServerID: message.guild.id,
 					UserID: WarnedUser.id,
-					Warns: [[`Moderator: ${message.author.username}`, `Reason: ${Reason}`]]
+					Warns: [[`Moderator: ${message.member.user.tag}`, `Reason: ${Reason}`]]
 				})
 				NewWarn.save().catch(Error => console.error(Error))
 				WarnAmounts = 1
 			} else {
-				Results1.Warns.push([`Moderator: ${message.author.username}`, `Reason: ${Reason}`])
+				Results1.Warns.push([`Moderator: ${message.member.user.tag}`, `Reason: ${Reason}`])
 				Results1.save().catch(Error => console.log(Error))
 				WarnAmounts = 1 + Results1.Warns.size
 			}
@@ -59,7 +59,7 @@ class KickCommand extends Commando.Command {
 							let LoggingChannel = message.guild.channels.get(Results2.LogsChannel);
 							let RichEmbed = new Discord.RichEmbed()
 							.setDescription("Member Warned!")
-							.setFooter(`Warned By: ${message.author.username}`)
+							.setFooter(`Warned By: ${message.member.user.tag}`)
 							.setColor("#ffe593")
 							.addField("Warned User", `<@${WarnedUser.id}>`)
 							.addField("Warned In", message.channel)
