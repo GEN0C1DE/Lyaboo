@@ -1,7 +1,7 @@
 module.exports = (Bot, Member) => { 
 	console.log(`${Settings.Name} has loaded and is ready for Usage. Online at ${Settings.Bot.guilds.size}`);
     if (Settings.Testing === false) {
-        Settings.Bot.user.setActivity(`${Settings.Status}`, {type: "STREAMING"})
+        Settings.Bot.user.setActivity(`${Settings.Status}`, {url: "http://twitch.tv/Zulinghu", type: "STREAMING"})
     };
     if(Settings.Testing === true){
         Settings.Bot.user.setStatus("idle");
