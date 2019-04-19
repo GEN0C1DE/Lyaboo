@@ -22,7 +22,7 @@ class BanCommand extends Commando.Command {
         let BannedUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(Args[0]));
 		if(!BannedUser) return message.channel.send(":warning: Couldn't find user.");
 		
-		let Reason = Args.join(" ").slice(22);
+		let Reason = Args.join(" ").slice(2);
 		if (!Reason) Reason = "No Reason Provided!"
 		
 		Settings.Schemas.Mods.findOne({
@@ -42,7 +42,6 @@ class BanCommand extends Commando.Command {
 						.addField("Banned User", `${BannedUser} with ID ${BannedUser.id}`)
 						.addField("Banned By", `<@${message.author.id}> with ID ${message.author.id}`)
 						.addField("Banned In", message.channel)
-						.addField("Time", message.createdAt)
 						.addField("Reason", Reason)
 						.setFooter(`Brought to you by Lyaboo`);
 						

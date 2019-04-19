@@ -22,7 +22,7 @@ class KickCommand extends Commando.Command {
         let KickedUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(Args[0]));
 		if(!KickedUser) return message.channel.send(":warning: Couldn't find user.");
 		
-		let Reason = Args.join(" ").slice(22);
+		let Reason = Args.join(" ").slice(2);
 		if (!Reason) Reason = "No Reason Provided!"
 		
 		Settings.Schemas.Mods.findOne({
@@ -42,7 +42,6 @@ class KickCommand extends Commando.Command {
 						.addField("Kicked User", `${KickedUser} with ID ${KickedUser.id}`)
 						.addField("Kicked By", `<@${message.author.id}> with ID ${message.author.id}`)
 						.addField("Kicked In", message.channel)
-						.addField("Time", message.createdAt)
 						.addField("Reason", Reason)
 						.setFooter(`Brought to you by Lyaboo`);
 						
