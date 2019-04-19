@@ -2,7 +2,7 @@ const Commando = Depends.Commando
 const Discord = Depends.Discord
 const Mongoose = Depends.Mongoose
 
-class KickCommand extends Commando.Command {
+class PurgeCommand extends Commando.Command {
     constructor(client) {
         super(client, {
             name: 'purge',
@@ -52,4 +52,4 @@ class KickCommand extends Commando.Command {
     }
 }
 
-module.exports = KickCommand
+module.exports = PurgeCommand
