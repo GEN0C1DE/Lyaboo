@@ -16,12 +16,30 @@ class ServerCommand extends Commando.Command {
 		if (message.channel.type === "dm") return;
 		if (Settings.Testing === true) return;
 		
-		let GuildCreated = message.guild.createdAt.toString()
+		let Online = message.guild.members.filter(member => member.user.presence.status !== 'offline');
+		let Day = message.guild.createdAt.getDate()
+		let Month = 1 + message.guild.createdAt.getMonth()
+		let Year = message.guild.createdAt.getFullYear()
+		let Icon = message.guild.iconURL;
+		
 		let Embed = new Discord.RichEmbed()
-		.setColor("#27037e")
-		.setThumbnail(message.guild.iconURL)
-		.setDescription(`:white_small_square: ID:** ${message.guild.id}**\n:white_small_square: Owner: **${message.guild.owner.user.username + '#' + message.guild.owner.user.discriminator}**\n:white_small_square: Location: **${message.guild.region}**\n:white_small_square: Server Creation: **${GuildCreated.slice(0, GuildCreated.length - 29)}**\n:white_small_square: Users: **${message.guild.memberCount} **(online ${message.guild.presences.findAll('status', 'online').length}, idle ${message.guild.presences.findAll('status', 'idle').length},busy ${message.guild.presences.findAll('status', 'dnd').length}, invis ${message.guild.memberCount - message.guild.presences.array().length})\n:white_small_square: Roles: **${message.guild.roles.array().length}**\n:white_small_square: Channels: **${message.guild.channels.array().length}**  (text ${message.guild.channels.findAll('type', 'text').length}, voice ${message.guild.channels.findAll('type', 'voice').length})`)
-		message.channel.send(`Information about **${message.guild.name}**:`, Embed)
+		   .setAuthor(message.guild.name, Icon)
+		   .setFooter(`Server Created • ${Day}.${Month}.${Year}`)
+		   .setColor("#7289DA")
+		   .setThumbnail(Icon)
+		   .addField("ID", message.guild.id, true)
+		   .addField("Name", message.guild.name, true)
+		   .addField("Owner", message.guild.owner.user.tag, true)
+		   .addField("Region", message.guild.region, true)
+		   .addField("Channels", message.guild.channels.size, true)
+		   .addField("Members", message.guild.memberCount, true)
+		   .addField("Humans", message.guild.memberCount - message.guild.members.filter(m => m.user.bot).size, true)
+		   .addField("Bots", message.guild.members.filter(m => m.user.bot).size, true)
+		   .addField("Online", Online.size, true)
+		   .addField("Roles", message.guild.roles.size, true);
+		   
+		return message.channel.send(Embed)
+ 
 	}
 }
 
