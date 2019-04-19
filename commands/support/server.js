@@ -25,7 +25,7 @@ class ServerCommand extends Commando.Command {
 		let Embed = new Discord.RichEmbed()
 		   .setAuthor(message.guild.name, Icon)
 		   .setFooter(`Server Created • ${Day}.${Month}.${Year}`)
-		   .setColor("#7289DA")
+		   .setColor("#27037e")
 		   .setThumbnail(Icon)
 		   .addField("ID", message.guild.id, true)
 		   .addField("Name", message.guild.name, true)
