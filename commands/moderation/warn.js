@@ -22,7 +22,7 @@ class KickCommand extends Commando.Command {
 		let WarnedUser = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0])
 		if (!WarnedUser) return message.reply(":warning: Couldn't find user.");
 		
-		let Reason = Args.join(" ").slice(2);
+		let Reason = Message = Args.splice(2).join(" ");
 		if (!Reason) Reason = "No Reason Provided!"
 		
 		if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send(":warning: You do not have permissions to do that.");

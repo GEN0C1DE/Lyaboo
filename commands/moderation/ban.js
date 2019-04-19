@@ -22,7 +22,7 @@ class BanCommand extends Commando.Command {
         let BannedUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(Args[0]));
 		if(!BannedUser) return message.channel.send(":warning: Couldn't find user.");
 		
-		let Reason = Args.join(" ").slice(2);
+		let Reason = Message = Args.splice(2).join(" ");
 		if (!Reason) Reason = "No Reason Provided!"
 		
 		if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send(":warning: You do not have permissions to do that.");
