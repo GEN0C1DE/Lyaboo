@@ -46,7 +46,7 @@ class KickCommand extends Commando.Command {
 			} else {
 				Results1.Warns.push([`Moderator: ${message.member.user.tag}`, `Reason: ${Reason}`])
 				Results1.save().catch(Error => console.log(Error))
-				WarnAmounts = 1 + Results1.Warns.size
+				WarnAmounts = 1 + Results1.Warns.length
 			}
 			
 			Settings.Schemas.Mods.findOne({
