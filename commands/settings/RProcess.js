@@ -44,7 +44,7 @@ class AddCommand extends Commando.Command {
 							LMessage: ""
 						
 						})
-						NewRole.save().then(Results => console.log(Results)).catch(Error => console.log(Error))
+						NewRole.save().catch(Error => console.log(Error))
 					} else {
 						Results.Roles.push(RoleId);
 						Results.save().catch(Error => console.log(Error))
@@ -130,7 +130,7 @@ class AddCommand extends Commando.Command {
 							LMessage: ""
 							
 						})
-						NewChannel.save().then(Results => console.log(Results)).catch(Error => console.log(Error))
+						NewChannel.save().catch(Error => console.log(Error))
 					} else {
 						Results.Channel = Args[2];
 						Results.save().catch(Error => console.log(Error))
@@ -168,7 +168,7 @@ class AddCommand extends Commando.Command {
 							LMessage: "",
 							
 						})
-						NewJoin.save().then(Results => console.log(Results)).catch(Error => console.log(Error))
+						NewJoin.save().catch(Error => console.log(Error))
 					} else {
 						Results.JMessage = Message;
 						Results.save().catch(Error => console.log(Error))
@@ -206,7 +206,7 @@ class AddCommand extends Commando.Command {
 							LMessage: Message,
 							
 						})
-						Suggestion.save().then(Results => console.log(Results)).catch(Error => console.log(Error))
+						Suggestion.save().catch(Error => console.log(Error))
 					} else {
 						Results.LMessage = Message;
 						Results.save().catch(Error => console.log(Error))

@@ -25,25 +25,25 @@ class KickCommand extends Commando.Command {
 		let Reason = Args.join(" ").slice(2);
 		if (!Reason) Reason = "No Reason Provided!"
 		
+		if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send(":warning: You do not have permissions to do that.");
+		if(KickedUser.hasPermission("MANAGE_MESSAGES")) return message.channel.send(":warning: This person can't be kicked.");
+		message.guild.member(KickedUser).kick(Reason);
+		
 		Settings.Schemas.Mods.findOne({
 			ServerID: message.guild.id
 		}, (Error, Results) => { 
-			if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send(":warning: You do not have permissions to do that.");
-			if(KickedUser.hasPermission("MANAGE_MESSAGES")) return message.channel.send(":warning: This person can't be kicked.");
-			message.guild.member(KickedUser).kick(Reason);
-			
+			if(Error) console.log(Error);
 			if(Results){
 				if(Results.Logging === true){
 					if(message.guild.channels.get(Results.LogsChannel)){
 						let LoggingChannel = message.guild.channels.get(Results.LogsChannel);
 						let RichEmbed = new Discord.RichEmbed()
 						.setDescription("Member Kicked!")
-						.setColor("#27037e")
+						.setColor("#FFA500")
+						.setFooter(`Kicked By <@${message.author.id}> with ID ${message.author.id}`)
 						.addField("Kicked User", `${KickedUser} with ID ${KickedUser.id}`)
-						.addField("Kicked By", `<@${message.author.id}> with ID ${message.author.id}`)
 						.addField("Kicked In", message.channel)
-						.addField("Reason", Reason)
-						.setFooter(`Brought to you by Lyaboo`);
+						.addField("Reason", Reason);
 						
 						LoggingChannel.send(RichEmbed);
 					}

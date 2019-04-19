@@ -47,7 +47,7 @@ class AddCommand extends Commando.Command {
 							Logging: Bool,
 							LogsChannel: Args[3]
 						})
-						Suggestion.save().then(Results => console.log(Results)).catch(Error => console.log(Error))
+						Suggestion.save().catch(Error => console.log(Error))
 					} else {
 						Results.Logging = Bool;
 						Results.LogsChannel = Args[3];

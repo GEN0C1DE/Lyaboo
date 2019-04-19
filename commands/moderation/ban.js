@@ -25,25 +25,25 @@ class BanCommand extends Commando.Command {
 		let Reason = Args.join(" ").slice(2);
 		if (!Reason) Reason = "No Reason Provided!"
 		
+		if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send(":warning: You do not have permissions to do that.");
+		if(BannedUser.hasPermission("MANAGE_MESSAGES")) return message.channel.send(":warning: This person can't be kicked.");
+		message.guild.member(BannedUser).ban(Reason);
+		
 		Settings.Schemas.Mods.findOne({
 			ServerID: message.guild.id
 		}, (Error, Results) => { 
-			if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send(":warning: You do not have permissions to do that.");
-			if(BannedUser.hasPermission("MANAGE_MESSAGES")) return message.channel.send(":warning: This person can't be kicked.");
-			message.guild.member(BannedUser).ban(Reason);
-			
+			if(Error) console.error(Error);
 			if(Results){
 				if(Results.Logging === true){
 					if(message.guild.channels.get(Results.LogsChannel)){
 						let LoggingChannel = message.guild.channels.get(Results.LogsChannel);
 						let RichEmbed = new Discord.RichEmbed()
 						.setDescription("Member Banned!")
-						.setColor("#27037e")
-						.addField("Banned User", `${BannedUser} with ID ${BannedUser.id}`)
-						.addField("Banned By", `<@${message.author.id}> with ID ${message.author.id}`)
+						.setColor("#FF0000")
+						.setFooter(`Banned By <@${message.author.id}> with ID ${message.author.id}`)
+						.addField("Banned User", `${KickedUser} with ID ${KickedUser.id}`)
 						.addField("Banned In", message.channel)
-						.addField("Reason", Reason)
-						.setFooter(`Brought to you by Lyaboo`);
+						.addField("Reason", Reason);
 						
 						LoggingChannel.send(RichEmbed);
 					}

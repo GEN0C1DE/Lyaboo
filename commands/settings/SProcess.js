@@ -50,7 +50,7 @@ class SSetupCommand extends Commando.Command {
 							SuggestionsChannel: Args[3],
 							RecordChannel: Args[4]
 						})
-						Suggestion.save().then(Results => console.log(Results)).catch(Error => console.log(Error))
+						Suggestion.save().catch(Error => console.log(Error))
 					} else {
 						Results.SuggestionsEnabled = Bool;
 						Results.SuggestionsChannel = Args[3];

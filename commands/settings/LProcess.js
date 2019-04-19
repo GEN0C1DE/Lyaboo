@@ -66,7 +66,7 @@ class RSetupCommand extends Commando.Command {
 							ServerID: message.guild.id,
 							Roles: [[LevelArg, RoleId]]
 						})
-						Role.save().then(Results => console.log(Results)).catch(Error => console.log(Error))
+						Role.save().catch(Error => console.log(Error))
 					} else {
 						let SetFRoles = [LevelArg, RoleId]
 						Results.Roles.push(SetFRoles)
