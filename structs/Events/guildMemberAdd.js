@@ -33,7 +33,7 @@ module.exports = (Bot, Member) => {
 	})
 
 	Settings.Schemas.Level.findOne({
-		UserId: Message.author.id
+		UserId: Member.author.id
 	}, (Error, Results) => {
 		if (!Results) return;
 		if (!Error) console.error(Error);
@@ -41,7 +41,7 @@ module.exports = (Bot, Member) => {
 		let CurrentLevel = Results.LevelNumber;
 			
 		Settings.Schemas.Role.findOne({
-			ServerID: Message.guild.id
+			ServerID: Member.guild.id
 		}, (Error, Results) => {
 			if(Error) console.error(Error);
 			if (!Results) return;
@@ -50,13 +50,13 @@ module.exports = (Bot, Member) => {
 			Roles.forEach((array) => {
 				let LvlNum = array[0]
 				let RoleID = array[1]
-				let ARole = Message.guild.roles.get(RoleID)
+				let ARole = Member.guild.roles.get(RoleID)
 						
 				if(!ARole) return;
 				if(!LvlNum) return;
 						
 				if(Number(LvlNum) <= CurrentLevel){
-					Message.member.addRole(ARole);
+					Member.addRole(ARole);
 				}	
 			})
 		})	
