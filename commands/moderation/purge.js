@@ -40,7 +40,7 @@ class PurgeCommand extends Commando.Command {
 						let RichEmbed = new Discord.RichEmbed()
 						.setAuthor("Purge Messages")
 						.setColor("000000")
-						.addField("Executor", `<@${message.author.id}>`)
+						.addField("Purge Initiator", `<@${message.author.id}>`)
 						.addField("Purged Amount", `${Args[1]}`)
 						.setFooter("Brought to you by Lyaboo");
 						
