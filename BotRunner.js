@@ -40,7 +40,8 @@ global.Settings = {
 		Role: require(__dirname + "/structs/Schemas/roleSchema.js"),
 		User: require(__dirname + "/structs/Schemas/userSchema.js"),
 		Join: require(__dirname + "/structs/Schemas/joinSchema.js"),
-		Mods: require(__dirname + "/structs/Schemas/moderationSchema.js")
+		Mods: require(__dirname + "/structs/Schemas/moderationSchema.js"),
+		Warns: require(__dirname + "/structs/Schemas/warnSchema.js")
 	},
     Bot: "", // Client 
 	Connection: `mongodb://${process.env.MonUSERTOKEN}:${process.env.MonPASSTOKEN}@ds024748.mlab.com:24748/lyaboo_server` // Used for the Database
