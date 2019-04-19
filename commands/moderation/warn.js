@@ -37,11 +37,11 @@ class KickCommand extends Commando.Command {
 				let NewWarn = new Settings.Schemas.Warns({
 					ServerID: message.guild.id,
 					UserID: WarnedUser.id,
-					Warns: [[Moderator: `${message.author.username}`, Reason: `${Reason}`]]
+					Warns: [[`Moderator: ${message.author.username}`, `Reason: ${Reason}`]]
 				})
 				NewWarn.save().catch(Error => console.error(Error))
 			} else {
-				Results1.Warns.push([Moderator: `${message.author.username}`, Reason: `${Reason}`])
+				Results1.Warns.push([`Moderator: ${message.author.username}`, `Reason: ${Reason}`])
 				Results1.save().catch(Error => console.log(Error))
 			}
 			
