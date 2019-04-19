@@ -3,9 +3,7 @@ module.exports = (Bot, Message) => {
 	if (Message.channel.type === "dm") return;
 	if (Message.content.startsWith(Settings.Prefix)) return;
 	if (Settings.Testing === true) return;
-	
-	Depends.Mongoose.connect(Settings.Connection + "\Level", {useNewUrlParser: true }).catch(Error => console.error(Error))
-	
+		
 	Settings.Schemas.User.findOne({
 			UserId: Message.author.id
 		}, (Error, Results) => {
@@ -14,7 +12,7 @@ module.exports = (Bot, Message) => {
 				if (Results.IsAFK === true){
 					Results.IsAFK = false
 					Results.Reason = ""
-					Results.save().then(Results => console.log(Results)).catch(Error => console.log(Error))
+					Results.save().catch(Error => console.log(Error))
 					let RichEmbed = new Depends.Discord.RichEmbed()
 					.setColor("#27037e")
 					.setDescription(`Welcome Back!, Your AFK was removed.`)
@@ -51,7 +49,7 @@ module.exports = (Bot, Message) => {
 				XPNumber: NewXP,
 				MoneyNumber: 0
 			})
-			Level.save().then(Results => console.log(Results)).catch(Error => console.log(Error))
+			Level.save().catch(Error => console.log(Error))
 		} else {
 			let CurrentLevel = Results.LevelNumber;
 			let CurrentXP = Results.XPNumber;
