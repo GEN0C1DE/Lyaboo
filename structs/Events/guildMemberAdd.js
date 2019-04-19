@@ -33,7 +33,7 @@ module.exports = (Bot, Member) => {
 	})
 
 	Settings.Schemas.Level.findOne({
-		UserId: Member.author.id
+		UserId: Member.id
 	}, (Error, Results) => {
 		if (!Results) return;
 		if (!Error) console.error(Error);
