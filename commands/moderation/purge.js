@@ -21,7 +21,7 @@ class PurgeCommand extends Commando.Command {
 
         if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send(":warning: You do not have permissions to do that.");
 			
-		const DeleteCount = parseInt(args[0], 10);
+		const DeleteCount = parseInt(Args[1], 10);
 		if(!DeleteCount || DeleteCount < 2 || DeleteCount > 100)
 		return message.channel.send("Please provide a number between 2 and 100 for the number of messages to delete.");
 		
@@ -41,7 +41,7 @@ class PurgeCommand extends Commando.Command {
 						.setAuthor("♻️ Action | Purge")
 						.setColor("27037e")
 						.addField("Executor", `<@${message.author.id}>`)
-						.addField("Purged Amount", `${args[0]}`)
+						.addField("Purged Amount", `${Args[0]}`)
 						.setFooter("Brought to you by Lyaboo");
 						
 						LoggingChannel.send(RichEmbed)
