@@ -27,7 +27,9 @@ class KickCommand extends Commando.Command {
 		
 		if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send(":warning: You do not have permissions to do that.");
 		if (WarnedUser.hasPermission("MANAGE_MESSAGES")) return message.reply(":warning: This person can't be warned.");
-
+		
+		let WarnAmounts;
+		
 		Settings.Schemas.Warns.findOne({
 			ServerID: message.guild.id,
 			UserID: WarnedUser.id
@@ -40,9 +42,11 @@ class KickCommand extends Commando.Command {
 					Warns: [[`Moderator: ${message.author.username}`, `Reason: ${Reason}`]]
 				})
 				NewWarn.save().catch(Error => console.error(Error))
+				WarnAmounts = 1
 			} else {
 				Results1.Warns.push([`Moderator: ${message.author.username}`, `Reason: ${Reason}`])
 				Results1.save().catch(Error => console.log(Error))
+				WarnAmounts = 1 + Results1.Warns.size
 			}
 			
 			Settings.Schemas.Mods.findOne({
@@ -59,13 +63,13 @@ class KickCommand extends Commando.Command {
 							.setColor("#ffe593")
 							.addField("Warned User", `<@${WarnedUser.id}>`)
 							.addField("Warned In", message.channel)
-							.addField("Number of Warnings", Results1.Warns.size)
+							.addField("Number of Warnings", WarnAmounts)
 							.addField("Reason", Reason);
 							LoggingChannel.send(RichEmbed)
 						}
 					}
 					if(!Results2.WarnsBeforeKick === false){
-						if(Results2.WarnsBeforeKick === Results1.Warns.size){
+						if(Results2.WarnsBeforeKick === WarnAmounts){
 							message.guild.member(WarnedUser).kick(`Having ${Results2.WarnsBeforeKick} Warns, Automated by Lyaboo!`).catch(Error =>{
 								return message.channel.send(`I was unable to kick ${WarnedUser} for Having ${Results2.WarnsBeforeKick} Warnings!`)
 							});
@@ -77,14 +81,14 @@ class KickCommand extends Commando.Command {
 									.setFooter(`Kicked By: Lyaboo(Automated)`)
 									.setColor("#ffe593")
 									.addField("Kicked User", `<@${WarnedUser.id}>`)
-									.addField("Reason", "3 Warns Achieved");
+									.addField("Reason", `${Results2.WarnsBeforeKick} Warns Achieved`);
 									return LoggingChannel.send(RichEmbed)
 								}
 							}
 						}
 					}
 					if(!Results2.WarnsBeforeBan === false){
-						if(Results2.WarnsBeforeBan === Results1.Warns.size){
+						if(Results2.WarnsBeforeBan === WarnAmounts){
 							message.guild.member(WarnedUser).ban(`Having ${Results2.WarnsBeforeBan} Warns, Automated by Lyaboo!`).catch(Error =>{
 								return message.channel.send(`I was unable to Ban ${WarnedUser} for Having ${Results2.WarnsBeforeBan} Warnings!`)
 							});
@@ -96,7 +100,7 @@ class KickCommand extends Commando.Command {
 									.setFooter(`Banned By: Lyaboo(Automated)`)
 									.setColor("#FF0000")
 									.addField("Banned User", `<@${WarnedUser.id}>`)
-									.addField("Reason", "3 Warns Achieved");
+									.addField("Reason", `${Results2.WarnsBeforeBan} Warns Achieved`);
 									return LoggingChannel.send(RichEmbed)
 								}
 							}
