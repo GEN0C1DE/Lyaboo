@@ -38,11 +38,10 @@ class PurgeCommand extends Commando.Command {
 					if(message.guild.channels.get(Results.LogsChannel)){
 						let LoggingChannel = message.guild.channels.get(Results.LogsChannel);
 						let RichEmbed = new Discord.RichEmbed()
-						.setAuthor("Purge Messages")
+						.setDescription("Purge Messages")
 						.setColor("000000")
-						.addField("Purge Initiator", `<@${message.author.id}>`)
 						.addField("Purged Amount", `${Args[1]}`)
-						.setFooter("Brought to you by Lyaboo");
+						.setFooter(`Executed By: ${message.member.user.tag}`);
 						
 						LoggingChannel.send(RichEmbed)
 					}
