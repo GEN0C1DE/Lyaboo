@@ -23,7 +23,7 @@ class LockCommand extends Commando.Command {
 		
 		if (!message.member.hasPermission('MANAGE_CHANNELS')) {
 			return message.channel.send(`Sorry, you don't have permission to lockdown or unlock!`)
-			.then(msg => msg.delete(10000);
+			.then(msg => msg.delete(10000));
 		}
 			
 		if (!Records[message.guild.id].Lockdown) Records[message.guild.id].Lockdown = { };
