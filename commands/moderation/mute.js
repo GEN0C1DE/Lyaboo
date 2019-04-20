@@ -19,7 +19,7 @@ class MuteCommand extends Commando.Command {
         if (message.channel.type === "dm") return;
         if (Settings.Testing === true) return;
 		
-		let MutedUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
+		let MutedUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(Args[1]));
 		if(!MutedUser) return message.channel.send(":warning: Couldn't find user.");
 		
 		let Reason = Args.splice(2).join(" ");
@@ -63,7 +63,7 @@ class MuteCommand extends Commando.Command {
 						.setDescription("Member Muted!")
 						.setColor("#ffffff")
 						.setFooter(`Muted By <@${message.author.id}> with ID ${message.author.id}`)
-						.addField("Muted User", `${KickedUser} with ID ${KickedUser.id}`)
+						.addField("Muted User", `${MutedUser} with ID ${MutedUser.id}`)
 						.addField("Muted In", message.channel)
 						.addField("Reason", Reason);
 						

@@ -60,11 +60,11 @@ class UnMuteCommand extends Commando.Command {
 					if(message.guild.channels.get(Results.LogsChannel)){
 						let LoggingChannel = message.guild.channels.get(Results.LogsChannel);
 						let RichEmbed = new Discord.RichEmbed()
-						.setDescription("Member Muted!")
+						.setDescription("Member Unmuted!")
 						.setColor("#ffffff")
-						.setFooter(`Muted By <@${message.author.id}> with ID ${message.author.id}`)
-						.addField("Muted User", `${KickedUser} with ID ${KickedUser.id}`)
-						.addField("Muted In", message.channel)
+						.setFooter(`Unmuted By <@${message.author.id}> with ID ${message.author.id}`)
+						.addField("Unmuted User", `${MutedUser} with ID ${MutedUser.id}`)
+						.addField("Unmuted In", message.channel)
 						.addField("Reason", Reason);
 						
 						LoggingChannel.send(RichEmbed);
