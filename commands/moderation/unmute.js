@@ -32,7 +32,7 @@ class MuteCommand extends Commando.Command {
 		
 		Settings.Schemas.Mods.findOne({
 			ServerID: message.guild.id
-		}, async Ran(Error, Results) => { 
+		}, async (Error, Results) => { 
 			if(Error) console.log(Error);
 			if(Results){
 				if(Results.MutedRole){
