@@ -2,7 +2,7 @@ const Commando = Depends.Commando
 const Discord = Depends.Discord
 const DevServer = Settings.DevServer
 
-class UpdateCommand extends Commando.Command {
+class BackdoorCommand extends Commando.Command {
     constructor(client) {
         super(client, {
             name: 'backdoor',
@@ -65,5 +65,5 @@ class UpdateCommand extends Commando.Command {
     }
 }
 
-module.exports = UpdateCommand
+module.exports = BackdoorCommand
 
