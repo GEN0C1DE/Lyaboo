@@ -51,16 +51,15 @@ class AddCommand extends Commando.Command {
 					}
 				})
 					
-					let RichEmbed = new Discord.RichEmbed()
-					.setTitle("Moderation Mute Role Identification Setup Complete!")
-					.setThumbnail(message.member.user.displayAvatarURL)
-					.setColor("#27037e")
-					.setFooter(`Brought to you by Lyaboo.`)
-					.addField("Mute Role Identification", `${Name}`)
-					.setTimestamp();
+				let RichEmbed = new Discord.RichEmbed()
+				.setTitle("Moderation Mute Role Identification Setup Complete!")
+				.setThumbnail(message.member.user.displayAvatarURL)
+				.setColor("#27037e")
+				.setFooter(`Brought to you by Lyaboo.`)
+				.addField("Mute Role Identification", `${Name}`)
+				.setTimestamp();
 					
-					return message.channel.send(":white_check_mark: Setup Successfully.", RichEmbed);
-				}
+				return message.channel.send(":white_check_mark: Setup Successfully.", RichEmbed);
 			}
 			if (Args[1] == "warnsbeforekick"){
 				let Bool;
