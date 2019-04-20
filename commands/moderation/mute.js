@@ -9,7 +9,7 @@ class MuteCommand extends Commando.Command {
 			aliases: ['nomouth', 'voiceboxdeletus', 'notyping'],
             group: 'moderation',
             memberName: "mute",
-            description: 'Will Warn a User for [REASON].'
+            description: 'Will Mute a User for [REASON].'
         });
     }
 

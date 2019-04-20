@@ -2,14 +2,14 @@ const Commando = Depends.Commando
 const Discord = Depends.Discord
 const Mongoose = Depends.Mongoose
 
-class MuteCommand extends Commando.Command {
+class UnMuteCommand extends Commando.Command {
     constructor(client) {
         super(client, {
-            name: 'mute',
-			aliases: ['nomouth', 'voiceboxdeletus', 'notyping'],
+            name: 'unmute',
+			aliases: ['havemouth', 'voiceboxhereus', 'granttyping'],
             group: 'moderation',
-            memberName: "mute",
-            description: 'Will Warn a User for [REASON].'
+            memberName: "unmute",
+            description: 'Will Un-Mute a User for [REASON].'
         });
     }
 
