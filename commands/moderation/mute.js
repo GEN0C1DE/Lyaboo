@@ -76,6 +76,9 @@ class MuteCommand extends Commando.Command {
 						MutedRole = message.guild.roles.find(`name`, `Muted`)
 					}
 				}	
+				
+				await (MutedUser.addRole(MutedRole));
+				
 				if(Results.Logging === true){
 					if(message.guild.channels.get(Results.LogsChannel)){
 						let LoggingChannel = message.guild.channels.get(Results.LogsChannel);
@@ -92,7 +95,6 @@ class MuteCommand extends Commando.Command {
 				}	
 			} 
 		})		   
-		await (MutedUser.addRole(MutedRole.id));
 	}
 }
 
