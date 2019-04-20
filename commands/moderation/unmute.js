@@ -26,7 +26,7 @@ class UnMuteCommand extends Commando.Command {
 		if (!Reason) Reason = "No Reason Provided!"
 		
 		if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send(":warning: You do not have permissions to do that.");
-		if (MutedUser.hasPermission("MANAGE_MESSAGES")) return message.reply(":warning: This person can't be warned.");
+		if (MutedUser.hasPermission("MANAGE_MESSAGES")) return message.channel.send(":warning: This person can't be muted.");
 		
 		let MutedRole;
 		
