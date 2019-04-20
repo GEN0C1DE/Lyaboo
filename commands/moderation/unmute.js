@@ -55,6 +55,26 @@ class UnMuteCommand extends Commando.Command {
 					} else {
 						MutedRole = message.guild.roles.find(`name`, `${Results.MutedRole}`)
 					}
+				} else {
+					if(!message.guild.roles.find(`name`, `Muted`)){
+						try {
+							MuteRole = await message.guild.createRole({
+								name: `Muted`,
+								color: "#000000",
+								permissions: []
+							})
+							message.guild.channels.forEach(async (channel, id) => {
+								await channel.overwritePermissions(MuteRole, {
+									SEND_MESSAGES: false,
+									ADD_REACTIONS: false
+								});
+							});
+						} catch(Error){
+							console.log(Error.stack);
+						}
+					} else {
+						MutedRole = message.guild.roles.find(`name`, `Muted`)
+					}
 				}	
 				if(Results.Logging === true){
 					if(message.guild.channels.get(Results.LogsChannel)){
@@ -70,27 +90,7 @@ class UnMuteCommand extends Commando.Command {
 						LoggingChannel.send(RichEmbed);
 					}
 				}	
-			} else {
-				if(!message.guild.roles.find(`name`, `Muted`)){
-					try {
-						MuteRole = await message.guild.createRole({
-							name: `Muted`,
-							color: "#000000",
-							permissions: []
-						})
-						message.guild.channels.forEach(async (channel, id) => {
-							await channel.overwritePermissions(MuteRole, {
-								SEND_MESSAGES: false,
-								ADD_REACTIONS: false
-							});
-						});
-					} catch(Error){
-						console.log(Error.stack);
-					}
-				} else {
-					MutedRole = message.guild.roles.find(`name`, `Muted`)
-				}
-			}
+			} 
 		})		   
 		await (MutedUser.removeRole(MutedRole.id));
 	}
