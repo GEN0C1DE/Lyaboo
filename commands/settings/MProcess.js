@@ -9,7 +9,7 @@ class AddCommand extends Commando.Command {
 			aliases: ['mprocess'],
 			group: 'settings',
 			memberName: "mprocess",
-			description: 'Process for Viewing or Setting Up Moderation Settings. \n**Options:[view, set, warnsbeforekick, warnsbeforeban]**',
+			description: 'Process for Viewing or Setting Up Moderation Settings. \n**Options:[view, set, warnsbeforekick, warnsbeforeban, muterole]**',
 			examples: ['=mprocess view', '=mprocess set true CHANNELID']
 		});
 	}	
@@ -26,6 +26,42 @@ class AddCommand extends Commando.Command {
 				console.error(Error)
 			})
 			
+			if (Args[1] == "muterole"){
+				let Role = message.mentions.roles.first() || message.guild.roles.get(Args[1]);
+				if(!Role) return message.channel.send(":x: Roles weren't Found!");
+				let Name = Role.name;
+			
+				Settings.Schemas.Mods.findOne({
+					ServerID: message.guild.id
+				}, (Error, Results) => {
+					if (Error) console.log(Error);
+					if(!Results){
+						let Mods = new Settings.Schemas.Mods({
+							ServerID: message.guild.id,
+							Logging: false,
+							LogsChannel: "",
+							MuteRole: Name,
+							WarnsBeforeKick: NaN,
+							WarnsBeforeBan: NaN
+						})
+						Mods.save().catch(Error => console.log(Error))
+					} else {
+						Results.MuteRole = Name;
+						Results.save().catch(Error => console.log(Error))
+					}
+				})
+					
+					let RichEmbed = new Discord.RichEmbed()
+					.setTitle("Moderation Mute Role Identification Setup Complete!")
+					.setThumbnail(message.member.user.displayAvatarURL)
+					.setColor("#27037e")
+					.setFooter(`Brought to you by Lyaboo.`)
+					.addField("Mute Role Identification", `${Name}`)
+					.setTimestamp();
+					
+					return message.channel.send(":white_check_mark: Setup Successfully.", RichEmbed);
+				}
+			}
 			if (Args[1] == "warnsbeforekick"){
 				let Bool;
 				if (Args[2] === "false") {
