@@ -6,7 +6,6 @@ global.Depends = {
 	// Primary Dependencies
     Discord: require('discord.js'), // Library for Hosting Bot.
     Commando: require('discord.js-commando'), // Library Extension for Hosting Bot.
-    Timeout: require('foreach-timeout'), // Used for Rainbow Roles.
 	Pastee: require("pastee"), // Used for Maintaining Data exceed overing Character Limits.
 	Mongoose: require("mongoose"), // Used for Storing Data.
 	Request: require("request"), // Used for Requesting Site Data.
