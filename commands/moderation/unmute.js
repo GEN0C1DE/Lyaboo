@@ -96,4 +96,4 @@ class UnMuteCommand extends Commando.Command {
 	}
 }
 
-module.exports = MuteCommand
+module.exports = UnMuteCommand
