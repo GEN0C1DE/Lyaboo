@@ -61,6 +61,12 @@ async function Play(Guild, Song) {
 	if (!Song) {
 		Queue.Voice.leave(); 
 		delete Records[Guild.id].Music;
+		
+		if(Settings.DevServer.GuildId == Guild.id){
+			if (Settings.Testing === false) {
+				Settings.Bot.user.setActivity(`${Settings.Status}`, {url: "http://twitch.tv/Zulinghu", type: "STREAMING"})
+			};
+		};	
 		return;
 	}
 	
@@ -81,6 +87,11 @@ async function Play(Guild, Song) {
 		.on('error', Error => console.error(Error));
 	Dispatcher.setVolumeLogarithmic(Queue.Volume / 5);
 	Queue.Text.send(`:musical_note: Now playing: **${Song.title}** Requested by: **${Song.requester}**`).then(M => M.delete(5000));
+	if(Settings.DevServer.GuildId == Guild.id){
+		if (Settings.Testing === false) {
+			Settings.Bot.user.setActivity(`ZULINGHU MUSIC: ${Song.title}`, {url: `${Song.url}`, type: "PLAYING"})
+		};
+	};	
 }
 
 
