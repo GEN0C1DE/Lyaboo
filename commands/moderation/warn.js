@@ -19,7 +19,7 @@ class KickCommand extends Commando.Command {
         if (message.channel.type === "dm") return;
         if (Settings.Testing === true) return;
 		
-		let WarnedUser = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0])
+		let WarnedUser = message.guild.member(message.mentions.users.first()) || message.guild.members.get(Args[1])
 		if (!WarnedUser) return message.reply(":warning: Couldn't find user.");
 		
 		let Reason = Args.splice(2).join(" ");
@@ -79,7 +79,7 @@ class KickCommand extends Commando.Command {
 									let RichEmbed = new Discord.RichEmbed()
 									.setDescription("Member Kicked!")
 									.setFooter(`Kicked By: Lyaboo(Automated)`)
-									.setColor("#ffe593")
+									.setColor("#FFA500")
 									.addField("Kicked User", `<@${WarnedUser.id}>`)
 									.addField("Reason", `${Results2.WarnsBeforeKick} Warns Achieved`);
 									return LoggingChannel.send(RichEmbed)
