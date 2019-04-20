@@ -89,7 +89,7 @@ async function Play(Guild, Song) {
 	Queue.Text.send(`:musical_note: Now playing: **${Song.title}** Requested by: **${Song.requester}**`).then(M => M.delete(5000));
 	if(Settings.DevServer.GuildId == Guild.id){
 		if (Settings.Testing === false) {
-			Settings.Bot.user.setActivity(`ZULINGHU MUSIC: ${Song.title}`, {url: `${Song.url}`, type: "PLAYING"})
+			Settings.Bot.user.setActivity(`Zulinghu Music: ${Song.title}`, {url: `${Song.url}`, type: "PLAYING"})
 		};
 	};	
 }
