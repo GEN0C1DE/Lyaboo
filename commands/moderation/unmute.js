@@ -19,7 +19,7 @@ class UnMuteCommand extends Commando.Command {
         if (message.channel.type === "dm") return;
         if (Settings.Testing === true) return;
 		
-		let MutedUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
+		let MutedUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(Args[1]));
 		if(!MutedUser) return message.channel.send(":warning: Couldn't find user.");
 		
 		let Reason = Args.splice(2).join(" ");

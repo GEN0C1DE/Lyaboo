@@ -32,7 +32,7 @@ class LockCommand extends Commando.Command {
 		if (!Time) return message.channel.send('You must set a duration for the lockdown in either hour(s), minute(s) or second(s), or end it!');
 		
 		let Unlocks = ['release', 'unlock', 'free'];
-		if (Unlocks.includes(time)) {
+		if (Unlocks.includes(Time)) {
 			message.channel.updateOverwrite(message.guild.id, {
 				SEND_MESSAGES: null
 			}).then(() => {
@@ -46,13 +46,13 @@ class LockCommand extends Commando.Command {
 			message.channel.updateOverwrite(message.guild.id, {
 				SEND_MESSAGES: false
 			}).then(() => {
-				message.channel.send(`Channel locked down for ${MS(MS(time), { long:true })}`).then(() => {
+				message.channel.send(`Channel locked down for ${MS(MS(Time), { long:true })}`).then(() => {
 					Records[message.guild.id].Lockdown[message.channel.id] = setTimeout(() => {
 						message.channel.updateOverwrite(message.guild.id, {
 							SEND_MESSAGES: null
 						}).then(message.channel.send('Lockdown has now been lifted. Users may return to normal chatting.')).catch(console.error);
 						delete Records[message.channel.id].Lockdown[message.channel.id];
-					}, MS(time));
+					}, MS(Time));
 				}).catch(error => {
 					console.log(error);
 				});
