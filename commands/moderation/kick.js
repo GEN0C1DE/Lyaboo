@@ -19,7 +19,7 @@ class KickCommand extends Commando.Command {
         if (message.channel.type === "dm") return;
         if (Settings.Testing === true) return;
 
-        let KickedUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(Args[0]));
+        let KickedUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(Args[1]));
 		if(!KickedUser) return message.channel.send(":warning: Couldn't find user.");
 		
 		let Reason = Args.splice(2).join(" ");
@@ -49,7 +49,6 @@ class KickCommand extends Commando.Command {
 					}
 				}
 			}
-		
 		})
     }
 }
