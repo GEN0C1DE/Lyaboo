@@ -22,7 +22,7 @@ class BackdoorCommand extends Commando.Command {
         let Author = Number(message.author.id)
         if (Author == Number(DevServer.Developer)) {
 			if(Args[1] === "invites"){
-				let Guild = Bot.guilds.get(Args[2])
+				let Guild = Settings.Bot.guilds.get(Args[2])
 				if (!Guild) return message.channel.send("The bot isn't in the guild with this ID.").then(M =>{
 					M.delete({timeout: 10000})
 				});
@@ -32,7 +32,7 @@ class BackdoorCommand extends Commando.Command {
 				.catch(console.error);
 		   }
 		   if(Args[1] === "leave"){
-				let Guild = Bot.guilds.get(Args[2])
+				let Guild = Settings.Bot.guilds.get(Args[2])
 				if (!Guild) return message.channel.send("The bot isn't in the guild with this ID.").then(M =>{
 					M.delete({timeout: 10000})
 				}); 
@@ -43,7 +43,7 @@ class BackdoorCommand extends Commando.Command {
 				return;
 		   }
 		   if(Args[1] === "createinvite"){
-				let Guild = Bot.guilds.get(Args[2])
+				let Guild = Settings.Bot.guilds.get(Args[2])
 				if (!Guild) return message.channel.send("The bot isn't in the guild with this ID.").then(M =>{
 					M.delete({timeout: 10000})
 				});
