@@ -26,7 +26,7 @@ global.Settings = {
     Testing: false, // Testing State of the Bot.
     Prefix: "=", // Prefix of the Bot.
     Status: "", // Status of the Bot.
-	Scopes: ["rpc", "rpc.api"]
+	Scopes: ["rpc", "rpc.api"],
     DevServer: {
         GuildId: "521782616563646465", // Guild Number for Home Bot Discord.
         AnnouncementChannel: "521841249963999232", // Announcements Channel for Discord.
