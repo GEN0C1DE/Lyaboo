@@ -56,7 +56,7 @@ global.Records = { // Used for Storing Temporary Information.
 
 // Getting Bot Registry
 Settings.Bot = new Depends.Commando.Client({ commandPrefix: Settings.Prefix, unknownCommandResponse: false })
-Settings.Rpc = new Depends.RPC.RPCClient({ transport: 'ipc' })
+Settings.Rpc = new Depends.RPC.Client({ transport: 'ipc' })
 Settings.Status = `${Settings.Prefix}info | discord.me/Zulinghu ${Settings.Version}`
 
 
