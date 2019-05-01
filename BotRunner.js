@@ -6,6 +6,7 @@ global.Depends = {
 	// Primary Dependencies
     Discord: require('discord.js'), // Library for Hosting Bot.
     Commando: require('discord.js-commando'), // Library Extension for Hosting Bot.
+	RPC: require('discord-rpc'), // Used for RPC Maintaining
 	Pastee: require("pastee"), // Used for Maintaining Data exceed overing Character Limits.
 	Mongoose: require("mongoose"), // Used for Storing Data.
 	Request: require("request"), // Used for Requesting Site Data.
@@ -21,10 +22,11 @@ global.Depends = {
 // Getting Bot Settings Information
 global.Settings = { 
     Name: "Lyaboo", // Name of Bot.
-    Version: "0.1.721", // Version of the Bot.
+    Version: "0.1.9", // Version of the Bot.
     Testing: false, // Testing State of the Bot.
     Prefix: "=", // Prefix of the Bot.
     Status: "", // Status of the Bot.
+	Scopes: ["rpc", "rpc.api"]
     DevServer: {
         GuildId: "521782616563646465", // Guild Number for Home Bot Discord.
         AnnouncementChannel: "521841249963999232", // Announcements Channel for Discord.
@@ -32,7 +34,8 @@ global.Settings = {
         Developer: "417835827700301836" // Bot Developer for Lyaboo.
     },
     DevKeys: {
-        Login: process.env.BOT_TOKEN // Used for Accessing the Bot.
+        Login: process.env.BOT_TOKEN, // Used for Accessing the Bot.
+		RPCID: process.env.RPC_TOKEN, // Used for Accessing the RPC.
     },
 	Schemas: {
 		Level: require(__dirname + "/structs/Schemas/levelSchema.js"),
@@ -43,7 +46,8 @@ global.Settings = {
 		Mods: require(__dirname + "/structs/Schemas/moderationSchema.js"),
 		Warns: require(__dirname + "/structs/Schemas/warnSchema.js")
 	},
-    Bot: "", // Client 
+    Bot: "", // Commando Client 
+	Rpc: "", // RPC Client
 	Connection: `mongodb://${process.env.MonUSERTOKEN}:${process.env.MonPASSTOKEN}@ds024748.mlab.com:24748/lyaboo_server` // Used for the Database
 }
 global.Records = { // Used for Storing Temporary Information.
@@ -52,7 +56,9 @@ global.Records = { // Used for Storing Temporary Information.
 
 // Getting Bot Registry
 Settings.Bot = new Depends.Commando.Client({ commandPrefix: Settings.Prefix, unknownCommandResponse: false })
+Settings.Rpc = new Depends.RPC.RPCClient({ transport: 'websocket' })
 Settings.Status = `${Settings.Prefix}info | discord.me/Zulinghu ${Settings.Version}`
+
 
 Settings.Bot.registry
     .registerGroup('support', 'Support Commands')
@@ -82,8 +88,22 @@ Files.forEach((File) => {
 	}	
 }) 
 
+// RPC Connections
+Settings.Rpc.on("ready", () => {
+	console.log("RPC for Lyaboo Running!")
+	Settings.Rpc.setActivity({
+		details: `test`,
+		state: 'test',
+		// largeImageKey: 'test',
+		// largeImageText: 'test',
+		// smallImageKey: 'test',
+		// smallImageText: 'test',
+		instance: false,
+	})
+})
 // Opening Connections
 Depends.Mongoose.connect(Settings.Connection, {useNewUrlParser: true }).catch(Error => console.error(Error))
 
 // Getting Bot Functions
+Settings.Rpc.login({Settings.DevKeys.RPCID, Settings.Scopes})
 Settings.Bot.login(Settings.DevKeys.Login)
