@@ -56,7 +56,7 @@ global.Records = { // Used for Storing Temporary Information.
 
 // Getting Bot Registry
 Settings.Bot = new Depends.Commando.Client({ commandPrefix: Settings.Prefix, unknownCommandResponse: false })
-Settings.Rpc = new Depends.RPC.RPCClient({ transport: 'websocket' })
+Settings.Rpc = new Depends.RPC.RPCClient({ transport: 'ipc' })
 Settings.Status = `${Settings.Prefix}info | discord.me/Zulinghu ${Settings.Version}`
 
 
@@ -105,5 +105,5 @@ Settings.Rpc.on("ready", () => {
 Depends.Mongoose.connect(Settings.Connection, {useNewUrlParser: true }).catch(Error => console.error(Error))
 
 // Getting Bot Functions
-Settings.Rpc.login({Settings.DevKeys.RPCID, Settings.Scopes})
+Settings.Rpc.login({ Settings.DevKeys.RPCID })
 Settings.Bot.login(Settings.DevKeys.Login)
