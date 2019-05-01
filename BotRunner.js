@@ -105,5 +105,5 @@ Settings.Rpc.on("ready", () => {
 Depends.Mongoose.connect(Settings.Connection, {useNewUrlParser: true }).catch(Error => console.error(Error))
 
 // Getting Bot Functions
-Settings.Rpc.login({ Settings.DevKeys.RPCID })
+Settings.Rpc.login(Settings.DevKeys.RPCID)
 Settings.Bot.login(Settings.DevKeys.Login)
