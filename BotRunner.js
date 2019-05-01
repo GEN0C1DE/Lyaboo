@@ -35,7 +35,7 @@ global.Settings = {
     },
     DevKeys: {
         Login: process.env.BOT_TOKEN, // Used for Accessing the Bot.
-		RPCID: process.env.RPC_TOKEN, // Used for Accessing the RPC.
+		RPCID: process.env.RPC_TOKEN // Used for Accessing the RPC.
     },
 	Schemas: {
 		Level: require(__dirname + "/structs/Schemas/levelSchema.js"),
@@ -105,5 +105,5 @@ Settings.Rpc.on("ready", () => {
 Depends.Mongoose.connect(Settings.Connection, {useNewUrlParser: true }).catch(Error => console.error(Error))
 
 // Getting Bot Functions
-Settings.Rpc.login({`${Settings.DevKeys.RPCID}`, Settings.Scopes})
+Settings.Rpc.login({Settings.DevKeys.RPCID, Settings.Scopes})
 Settings.Bot.login(Settings.DevKeys.Login)
