@@ -22,7 +22,7 @@ global.Depends = {
 global.Settings = { 
     Name: "Lyaboo", // Name of Bot.
     Version: "0.1.9", // Version of the Bot.
-    Testing: false, // Testing State of the Bot.
+    Testing: true, // Testing State of the Bot.
     Prefix: "=", // Prefix of the Bot.
     Status: "", // Status of the Bot.
     DevServer: {
