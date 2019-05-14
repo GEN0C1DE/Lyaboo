@@ -33,11 +33,13 @@ class RankCommand extends Commando.Command {
 		let Reward = 200;
 		
 		Settings.Schemas.Level.findOne({
+			ServerID: message.guild.id,
 			UserId: User.id
 		}, (Error, Results) => {
 			if (Error) return console.log(Error);
 			if(!Results){
 				let Level = new Settings.Schemas.Level({
+					ServerID: Message.guild.id,
 					UserId: Message.author.id,
 					LevelNumber: 0,
 					XPNumber: 0,

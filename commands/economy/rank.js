@@ -27,6 +27,7 @@ class RankCommand extends Commando.Command {
 		let User = message.mentions.members.first() || message.author
 		
 		Settings.Schemas.Level.findOne({
+			ServerID: message.guild.id,
 			UserId: User.id
 		}, (Error, Results) => {
 			if (Error) return console.log(Error);
