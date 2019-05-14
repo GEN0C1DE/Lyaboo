@@ -39,11 +39,13 @@ module.exports = (Bot, Message) => {
 	}
 	
 	Settings.Schemas.Level.findOne({
+		ServerID: Message.guild.id,
 		UserId: Message.author.id
 	}, (Error, Results) => {
 		let NewXP = Math.floor(Math.random() * 7) + 8;
 		if (!Results) {
 			let Level = new Settings.Schemas.Level({
+				ServerID: Message.guild.id,
 				UserId: Message.author.id,
 				LevelNumber: 1,
 				XPNumber: NewXP,
