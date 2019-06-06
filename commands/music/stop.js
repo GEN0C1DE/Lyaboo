@@ -23,7 +23,7 @@ class StopCommand extends Commando.Command {
 	    if (!message.member.voiceChannel) return message.channel.send(':x: You are not in a voice channel!');
 		if (!Queue) return message.channel.send(':warning: There is nothing playing that I could stop for you.');
 		Queue.Queue = [];
-		Queue.Connection.dispatcher.end('Stop command has been used!');
+		Queue.Connection.dispatcher.destroy('Stop command has been used!');
 		return undefined;
     }
 }
