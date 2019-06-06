@@ -25,7 +25,7 @@ class SkipCommand extends Commando.Command {
 		if (!Queue) return message.channel.send(':x: There is nothing playing that I could skip for you.').then(M => M.delete(5000));
 			
 		if (message.member.hasPermission('ADMINISTRATOR')) {
-			Queue.Connection.dispatcher.end('Skip command has been used!');
+			Queue.Connection.dispatcher.destroy('Skip command has been used!');
 			return undefined;
 		} else {
 			let Song = Queue.Queue[0]
