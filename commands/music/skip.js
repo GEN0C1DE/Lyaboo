@@ -31,7 +31,7 @@ class SkipCommand extends Commando.Command {
 			let Song = Queue.Queue[0]
 			let Required = Math.ceil(message.member.voiceChannel.members.size/2)
 			if (Song.requester.id === message.member.id) {
-				Queue.Connection.dispatcher.end('Skip command has been used!');
+				Queue.Connection.dispatcher.destroy('Skip command has been used!');
 				return undefined;
 			} else {
 				if (Queue.Queue[0].skips.includes(message.member.id)) return message.channel.send(":warning: You've already voted to skip this song!")
@@ -40,7 +40,7 @@ class SkipCommand extends Commando.Command {
 				
 				if (Queue.Queue[0].skips.length >= Required) {
 					message.channel.send(":white_check_mark: Song Skipped").then(M => M.delete(5000))
-					Queue.Connection.dispatcher.end('Skip command has been used!');
+					Queue.Connection.dispatcher.destroy('Skip command has been used!');
 				}
 				return undefined;
 			}
