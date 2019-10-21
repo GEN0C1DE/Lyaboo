@@ -52,7 +52,7 @@ global.Records = { // Used for Storing Temporary Information.
 
 // Getting Bot Registry
 Settings.Bot = new Depends.Commando.Client({ commandPrefix: Settings.Prefix, unknownCommandResponse: false })
-Settings.Status = `${Settings.Prefix}info | ): DUAP CLAN :( | discord.gg/Rxs5R7d `
+Settings.Status = `DUAP CLAN | ${Settings.Prefix}info`
 
 
 Settings.Bot.registry
