@@ -12,7 +12,7 @@ global.Depends = {
 	MS: require("ms"), // Used for Moderation and ETC.
 	
     // Youtube and Music Dependencies
-    YTDL: require('ytdl-core-discord'), // To Host Music for Youtube.
+    YTDL: require('ytdl-core'), // To Host Music for Youtube.
     Search: require('yt-search'), // To Search in Various of Numbers on Youtube.
     Info: require('youtube-info'), // To get Info about a Youtube Song.
     Playlist: require('youtube-playlist') // To get a playlist of Songs from Youtube.
