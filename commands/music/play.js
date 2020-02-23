@@ -53,7 +53,6 @@ async function HandleVideo(Video, Message, VoiceChannel, Playlist = false) {
 		if (Playlist) return undefined;
 			else return Message.channel.send(`:musical_note: A song has been added to the queue!`, Embed);
 	}
-	return undefined;
 }
 async function Play(Guild, Song) {
 	const Queue = Records[Guild.id].Music;
