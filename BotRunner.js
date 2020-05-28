@@ -26,10 +26,10 @@ global.Settings = {
     Prefix: "=", // Prefix of the Bot.
     Status: "", // Status of the Bot.
     DevServer: {
-        GuildId: "521782616563646465", // Guild Number for Home Bot Discord.
-        AnnouncementChannel: "521841249963999232", // Announcements Channel for Discord.
-		StaffAnnouncementChannel: "524265252695703562", // Staff Announcements Channel for Discord.
-        Developer: "417835827700301836" // Bot Developer for Lyaboo.
+        GuildId: "602312289869234206", // Guild Number for Home Bot Discord.
+        AnnouncementChannel: "602955800578621442", // Announcements Channel for Discord.
+		StaffAnnouncementChannel: "709136194193195109", // Staff Announcements Channel for Discord.
+        Developer: "696176480433995876" // Bot Developer for Lyaboo.
     },
     DevKeys: {
         Login: process.env.BOT_TOKEN // Used for Accessing the Bot.
@@ -52,7 +52,7 @@ global.Records = { // Used for Storing Temporary Information.
 
 // Getting Bot Registry
 Settings.Bot = new Depends.Commando.Client({ commandPrefix: Settings.Prefix, unknownCommandResponse: false })
-Settings.Status = `CWEWO Adjudicator. | ${Settings.Prefix}info`
+Settings.Status = `EWO Mainframe. | ${Settings.Prefix}info`
 
 
 Settings.Bot.registry
