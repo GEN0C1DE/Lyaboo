@@ -1,5 +1,5 @@
 module.exports = (Bot, Member) => { 
-	console.log(`${Settings.Name} has loaded and is ready for Usage. Online at ${Settings.Bot.guilds.size}`);
+	console.log(`${Settings.Name} has loaded and is ready for Usage. Online at ${Settings.Bot.guilds.cache.size}`);
     if (Settings.Testing === false) {
         Settings.Bot.user.setActivity(`${Settings.Status}`, {url: "http://twitch.tv/DUAPClan", type: "STREAMING"})
     };
@@ -9,7 +9,7 @@ module.exports = (Bot, Member) => {
         return;
     }
 	
-    Settings.Bot.guilds.forEach((guild) => {
+    Settings.Bot.guilds.cache.forEach((guild) => {
 		if (!Records[guild.id]) {
 			Records[guild.id] = {
 				
